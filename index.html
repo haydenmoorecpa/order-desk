@@ -1,1 +1,663 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>Order desk</title></head><body></body></html>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-qGs+qguX36NcH5gDW70XqsfphR6QgWrNRt3dzCjIUX8=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230e0f12'/%3E%3Ctext x='29' y='44' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='36' text-anchor='middle' fill='%23ececef'%3EO%3C/text%3E%3Ccircle cx='49' cy='41' r='5' fill='%238ab4f8'/%3E%3C/svg%3E"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<style>
+:root{color-scheme:dark;
+--bg:#0e0f12;--panel:#16181d;--raise:#1c1f26;--sink:#0a0b0d;--line:#ffffff12;--line2:#ffffff24;
+--ink:#ececef;--ink2:#b9bcc4;--mute:#8a8f9c;--dim:#3d4150;
+--accent:#8ab4f8;--accent-strong:#2d6cdf;--good:#7ed3a0;--warn:#f0b35a;--bad:#f28b82;
+--display:"Space Grotesk","Plus Jakarta Sans",system-ui,sans-serif;--body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+--r:16px;--r2:10px;--max:1180px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:14.5px;line-height:1.5;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+button,select,input,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:30;background:#0e0f12e0;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-in{max-width:var(--max);margin:0 auto;padding:12px 20px;display:flex;align-items:center;gap:16px}
+.wordmark{font-family:var(--display);font-weight:700;font-size:1.45rem;letter-spacing:-.03em;color:var(--ink)}.wordmark b{color:var(--accent)}.wordmark:hover{text-decoration:none}
+.internal{font-family:var(--display);font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--warn);border:1px solid #f0b35a55;background:#f0b35a12;border-radius:999px;padding:3px 9px;margin-left:-6px;white-space:nowrap}
+.tabs{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;justify-content:center}.tabs::-webkit-scrollbar{display:none}
+.tab{border:1px solid transparent;background:none;color:var(--ink2);padding:8px 16px;border-radius:999px;font-weight:600;font-size:.93rem;cursor:pointer;white-space:nowrap}
+.tab:hover{background:#ffffff0d}.tab[aria-selected=true]{background:var(--ink);color:#0e0f12}
+.live{display:flex;align-items:center;gap:8px;font-size:.8rem;color:var(--mute);white-space:nowrap}
+.live .dot{width:8px;height:8px;border-radius:50%;background:var(--dim)}.live.on .dot{background:var(--good);box-shadow:0 0 0 3px #7ed3a022}.live.warn .dot{background:var(--warn)}
+.btn{border:1px solid var(--line2);background:none;color:var(--ink);border-radius:999px;padding:7px 14px;font-weight:600;font-size:.85rem;cursor:pointer}
+.btn:hover{background:#ffffff0d}.btn:disabled{opacity:.45;cursor:default}
+main{max-width:var(--max);margin:0 auto;padding:28px 20px 96px}
+.view[hidden]{display:none}
+.eyebrow{font-family:var(--display);font-size:.72rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+h1{font-family:var(--display);font-weight:600;font-size:clamp(1.6rem,3vw,2.15rem);letter-spacing:-.02em;line-height:1.1;margin:0 0 6px;text-wrap:balance}
+h2{font-family:var(--display);font-weight:600;font-size:1.08rem;letter-spacing:-.01em;margin:30px 0 12px;display:flex;align-items:baseline;gap:8px}
+h2 .n{font-family:var(--display);color:var(--mute);font-weight:500;font-size:.9rem}
+.lead{color:var(--ink2);max-width:68ch;margin:0 0 22px}
+.muted{color:var(--mute)}.small{font-size:.82rem}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.tiles{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));margin:0 0 18px}
+.tile{background:var(--panel);border-radius:14px;padding:14px 16px}
+.tk{font-size:.78rem;color:var(--ink2)}.tv{font-family:var(--display);font-weight:700;font-size:1.65rem;letter-spacing:-.02em;margin-top:2px;font-variant-numeric:tabular-nums}
+.ts{font-size:.76rem;color:var(--mute);margin-top:2px}.ts.good{color:var(--good)}.ts.warn{color:var(--warn)}
+.panel{background:var(--panel);border-radius:var(--r);padding:16px 18px;margin-bottom:14px}
+.ph{font-family:var(--display);font-weight:600;font-size:.95rem;margin-bottom:10px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.grid2{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(340px,1fr))}.grid3{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.88rem}
+th{font-family:var(--display);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);text-align:left;font-weight:600;padding:0 12px 8px 0;border-bottom:1px solid var(--line)}
+td{padding:8px 12px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+td.n,th.n{text-align:right;font-family:var(--display);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:999px;font-size:.75rem;font-weight:600;white-space:nowrap;border:1px solid transparent}
+.pill.info{color:var(--accent);background:#8ab4f814;border-color:#8ab4f833}.pill.warn{color:var(--warn);background:#f0b35a14;border-color:#f0b35a33}
+.pill.good{color:var(--good);background:#7ed3a014;border-color:#7ed3a033}.pill.mute{color:var(--mute);background:#ffffff08;border-color:var(--line2)}
+.pill.bad{color:var(--bad);background:#f28b8214;border-color:#f28b8233}.pill.auto{color:var(--ink2);background:none;border:1px dashed var(--line2)}
+.dotc{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dim);flex:none}.dotc.good{background:var(--good)}.dotc.warn{background:var(--warn)}.dotc.info{background:var(--accent)}.dotc.bad{background:var(--bad)}
+select,input[type=search],input[type=date],input[type=email],input[type=text],textarea{background:var(--sink);border:1px solid var(--line2);border-radius:var(--r2);padding:8px 10px;font-size:.88rem;color:var(--ink)}
+select{cursor:pointer}textarea{width:100%;min-height:64px;resize:vertical;line-height:1.45}
+.cbrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:.82rem;color:var(--ink2)}.cbrow input{flex:1;min-width:140px;font-family:var(--display);font-variant-numeric:tabular-nums}.cbrow .btn{padding:6px 12px;font-size:.8rem}
+/* Today */
+.sum{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));margin:0 0 6px}
+.sum a{display:block;background:var(--panel);border-radius:14px;padding:12px 16px;color:var(--ink)}.sum a:hover{background:var(--raise);text-decoration:none}
+.sum .tv{font-size:1.5rem}
+.cards{display:grid;gap:8px}
+.card{background:var(--panel);border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,.9fr) minmax(250px,1fr);gap:12px 20px;align-items:start}
+.card .who{font-family:var(--display);font-weight:600;font-size:1.02rem;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card .meta{color:var(--ink2);font-size:.84rem;margin-top:3px}
+.card .big{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:-.01em;user-select:all}
+.card .ctl{display:grid;gap:8px}.card .ctl select{width:100%}
+.saved{font-size:.75rem;color:var(--good);min-height:1em}
+details.mail summary{cursor:pointer;color:var(--accent);font-size:.82rem;font-weight:600;list-style:none;margin-top:6px}details.mail summary::-webkit-details-marker{display:none}
+details.mail pre{white-space:pre-wrap;font:inherit;font-size:.84rem;color:var(--ink2);background:var(--sink);border-radius:var(--r2);padding:12px;margin:8px 0 0;max-width:66ch}
+.empty{background:var(--panel);border-radius:14px;padding:14px 16px;color:var(--mute);font-size:.9rem}
+.banner{background:var(--raise);border:1px solid var(--line2);border-radius:14px;padding:12px 16px;margin:0 0 16px;font-size:.88rem;color:var(--ink2)}.banner b{color:var(--ink)}
+/* Pipeline */
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:0 0 12px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 58px);z-index:20;background:var(--bg);padding:8px 0}
+.seg{display:inline-flex;background:var(--panel);border-radius:999px;padding:3px}
+.seg button{border:0;background:none;color:var(--ink2);padding:6px 14px;border-radius:999px;font-weight:600;font-size:.85rem;cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed=true]{background:var(--ink);color:#0e0f12}
+.toolbar input[type=search]{flex:1;min-width:200px;border-radius:999px;padding:8px 14px}.toolbar select{border-radius:999px;padding:8px 12px}
+.plist{overflow-x:auto}
+.pgrid{display:grid;grid-template-columns:minmax(200px,1.5fr) 118px minmax(120px,.85fr) minmax(210px,1.45fr) 64px minmax(210px,1.25fr);gap:0 16px;align-items:center}
+.phead{font-family:var(--display);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);font-weight:600;padding:0 16px 8px}
+.prow{background:var(--panel);border-radius:12px;padding:12px 16px;margin-bottom:6px;cursor:pointer;min-width:980px}
+.prow:hover{background:var(--raise)}.prow:focus-visible{outline:2px solid var(--accent)}
+.phead{min-width:980px}
+.pf{font-weight:600}.ps{color:var(--mute);font-size:.8rem;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pc{font-size:.86rem;color:var(--ink2)}
+.pnote{color:var(--ink2);font-size:.8rem;margin-top:4px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.counts{display:flex;flex-wrap:wrap;gap:8px}
+/* Drawer */
+.scrim{position:fixed;inset:0;background:#00000080;z-index:40}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(540px,100%);background:#121418;border-left:1px solid var(--line2);z-index:41;overflow-y:auto;padding:calc(env(safe-area-inset-top,0px) + 20px) 22px calc(env(safe-area-inset-bottom,0px) + 40px);box-shadow:-30px 0 60px #00000066}
+.dh{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}.dh h3{font-family:var(--display);font-size:1.35rem;letter-spacing:-.02em;margin:0}
+.dsec{border-top:1px solid var(--line);padding-top:14px;margin-top:16px}.dsec .lab{font-family:var(--display);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:6px 12px;font-size:.88rem}.kv span:nth-child(odd){color:var(--mute)}.sel{user-select:all}
+.hist{display:grid;gap:6px}.hist div{display:flex;gap:10px;font-size:.86rem}.hist time{color:var(--mute);min-width:64px;font-family:var(--display);font-variant-numeric:tabular-nums}
+.copy{border:0;background:none;color:var(--accent);cursor:pointer;font-size:.78rem;padding:0 0 0 6px}
+.btn.primary{background:var(--ink);color:#0e0f12;border-color:transparent}.btn.primary:hover{background:#fff}.btn.primary:disabled{background:#ffffff14;color:var(--mute)}
+.savebar{display:flex;align-items:center;gap:10px;flex-wrap:wrap}.savebar .saved{min-height:0}
+.dbar{position:sticky;bottom:calc(-40px - env(safe-area-inset-bottom,0px));background:#121418;border-top:1px solid var(--line2);margin:18px -22px 0;padding:12px 22px calc(env(safe-area-inset-bottom,0px) + 14px);display:flex;align-items:center;gap:12px}
+.touches{display:grid;gap:6px}.touch{display:grid;grid-template-columns:78px minmax(0,1fr) 190px;gap:10px;align-items:center;font-size:.86rem;background:var(--panel);border-radius:10px;padding:8px 10px}
+.touch b{font-family:var(--display);font-weight:600}.touch select{width:100%}
+.soon{display:grid;grid-template-columns:120px 90px minmax(0,1fr) auto;gap:12px;align-items:center;font-size:.86rem;padding:7px 0;border-bottom:1px solid var(--line)}.soon:last-child{border-bottom:0}
+.soon .sd{font-family:var(--display);font-variant-numeric:tabular-nums;color:var(--ink2)}.soon .sf{font-weight:600}
+/* Events */
+.month{font-family:var(--display);font-weight:600;font-size:.95rem;margin:22px 0 10px;color:var(--ink2)}
+.ev{background:var(--panel);border-radius:14px;padding:12px 16px;margin-bottom:8px;display:grid;grid-template-columns:62px minmax(0,1.6fr) minmax(170px,.9fr) 150px 120px;gap:14px;align-items:start}
+.leaf{text-align:center;background:var(--sink);border-radius:10px;padding:6px 0}.leaf b{display:block;font-family:var(--display);font-size:1.35rem;line-height:1.1}.leaf span{font-size:.7rem;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+.ev .t{font-weight:600}.ev .m{color:var(--ink2);font-size:.83rem;margin-top:2px}.ev .w{color:var(--mute);font-size:.8rem;margin-top:6px;max-width:70ch}
+.links{display:grid;gap:4px;font-size:.84rem}
+.fitbar{display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:.85rem}.fitbar .bar{width:70px}
+/* KPI + GTM */
+.bar{height:6px;background:#ffffff10;border-radius:999px;display:inline-block;overflow:hidden;vertical-align:middle;width:100%}.bar i{display:block;height:100%;background:var(--accent);border-radius:999px}
+.frow,.rw{display:grid;grid-template-columns:minmax(150px,1fr) 2fr 56px;gap:12px;align-items:center;font-size:.86rem;padding:5px 0}.frow b,.rw b{font-family:var(--display);text-align:right;font-variant-numeric:tabular-nums}
+.spark{display:flex;align-items:flex-end;gap:4px;height:90px;border-bottom:1px solid var(--line);position:relative}.spark i{flex:1;background:linear-gradient(180deg,#8ab4f8,#2d6cdf);border-radius:6px 6px 2px 2px;min-height:2px}
+.spark .cap{position:absolute;left:0;right:0;border-top:1px dashed #f0b35a88}
+.axis{display:flex;justify-content:space-between;font-size:.7rem;color:var(--mute);margin-top:6px;font-family:var(--display)}
+.gtm{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(360px,1fr))}.gtm .wide{grid-column:1/-1}
+.prose{background:var(--panel);border-radius:var(--r);padding:6px 20px 16px}.prose h2{margin-top:16px}.prose p{color:var(--ink2);margin:0 0 10px;max-width:70ch}.prose b{color:var(--ink);font-weight:600}
+.tl{position:relative;height:88px;margin:18px 24px 6px}.tl-track{position:absolute;left:0;right:0;top:12px;height:2px;background:var(--line2)}
+.tl-m{position:absolute;top:0;transform:translateX(-50%);text-align:center;font-size:.78rem;white-space:nowrap}
+.tl-m i{display:block;width:14px;height:14px;border-radius:50%;margin:6px auto 8px;border:3px solid var(--panel)}.tl-m.email i{background:var(--accent)}.tl-m.call i{background:var(--warn)}
+.tl-m b{display:block;font-family:var(--display)}.tl-m span{color:var(--mute)}
+.st-grid{display:grid;gap:8px 20px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}.st-row{display:grid;grid-template-columns:140px 1fr;gap:10px;align-items:center;font-size:.86rem;color:var(--ink2)}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 20px);transform:translateX(-50%);background:var(--ink);color:#0e0f12;padding:10px 16px;border-radius:999px;font-weight:600;font-size:.88rem;z-index:60;box-shadow:0 10px 30px #00000066}
+.foot{color:var(--mute);font-size:.78rem;border-top:1px solid var(--line);padding-top:14px;margin-top:40px}
+@media (max-width:760px){
+ .nav-in{flex-wrap:wrap;padding:10px 16px}.tabs{order:3;flex-basis:100%;justify-content:flex-start}.live .lt{display:none}
+ main{padding:20px 16px 80px}.card{grid-template-columns:minmax(0,1fr)}
+ .toolbar{position:static}.prow,.phead{min-width:0}.phead{display:none}
+ .prow.pgrid{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px}.prow .c-city,.prow .c-post{display:none}.prow .c-law,.prow .c-why{grid-column:1/-1}
+ .ev{grid-template-columns:54px minmax(0,1fr)}.ev>.aud,.ev>.fitbar,.ev>.links,.ev>.evs{grid-column:2}
+ .gtm{grid-template-columns:minmax(0,1fr)}.tl{margin:18px 8px 6px}.tl-m span{display:none}
+ .touch{grid-template-columns:70px minmax(0,1fr)}.touch>span:last-child{grid-column:1/-1}.soon{grid-template-columns:minmax(0,1fr) auto}.soon .sf{grid-column:1/-1}
+}
+@media (prefers-reduced-motion:no-preference){.drawer{animation:slide .16s ease-out}@keyframes slide{from{transform:translateX(24px)}to{transform:none}}}
+.tabs[hidden],.live[hidden]{display:none}
+</style>
+<header class="nav"><div class="nav-in"><a class="wordmark" href="https://www.order.financial/" target="_blank" rel="noopener" title="order.financial, our public site">Order<b>.</b></a><span class="internal" title="Internal to Order. Not client-facing. Dashboard V1.1.">Internal · V1.1</span>
+<nav class="tabs" role="tablist" aria-label="Views" hidden><button class="tab" role="tab" data-v="today" aria-selected="true">Today</button><button class="tab" role="tab" data-v="pipeline" aria-selected="false">Pipeline</button><button class="tab" role="tab" data-v="kpis" aria-selected="false">KPIs</button><button class="tab" role="tab" data-v="gtm" aria-selected="false">Go-to-market</button><button class="tab" role="tab" data-v="events" aria-selected="false">Events</button></nav>
+<div class="live" id="live" hidden><span class="dot"></span><span class="lt">Data as of the last build</span><button class="btn" id="refresh" type="button">Refresh</button><button class="btn" id="signout" type="button">Sign out</button></div></div></header>
+<main>
+<section id="signin" aria-labelledby="si-title"><div class="head"><div><div class="eyebrow">Internal</div><h1 id="si-title">Sign in</h1>
+<p class="lead" id="si-msg">Enter your address. A sign-in link will be emailed to it; open the link on the device you want to use.</p></div></div>
+<div class="panel">
+<div id="si-step-email"><form id="si-email-form" class="cbrow" novalidate><label for="si-email">Email</label><input id="si-email" type="email" autocomplete="email" required><button class="btn primary" type="submit">Send link</button></form></div>
+<div id="si-step-sent" hidden><button class="btn" type="button" id="si-back">Use a different address</button></div>
+<div id="si-step-out" hidden><button class="btn" type="button" id="si-signout">Sign out</button></div>
+<p class="saved" id="si-status" role="status"></p>
+</div></section>
+</main>
+<div class="scrim" id="scrim" hidden></div><aside class="drawer" id="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="dtitle"></aside>
+<div class="toast" id="toast" role="status" hidden></div>
+<script id="desk-config" type="application/json">{"url": "https://wevigxmmbfegfoftsahp.supabase.co", "key": "sb_publishable_HAIwJnq5Im38GuTKGkw3Jw_hPCZYsQO", "redirect": "https://haydenmoorecpa.github.io/order-desk/"}</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js" integrity="sha384-tuevtT+97g9yLeuT/m52ejUJbc0hzsN6MPLiQEccySreiGjrcgk2tMBJR7/l6HGM" crossorigin="anonymous"></script>
+<script>window.__orderStart=function(){
+(function(){
+'use strict';
+var D=window.__ORDER_D;
+var ME=D.me.toLowerCase();
+var S={db:null,mcp:null,live:null,liveAt:null,liveState:'build',liveMsg:'',docs:{pipeline:{},outcomes:{},events:{}},seg:'yours',drawer:null,dirty:false,pending:{},drawerDirty:false};
+function $(s,r){return (r||document).querySelector(s)}
+function $$(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))}
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
+function pad(n){return String(n).padStart(2,'0')}
+function iso(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
+function pd(s){var p=String(s).slice(0,10).split('-');return new Date(+p[0],+p[1]-1,+p[2])}
+function localDay(ts){return ts?iso(new Date(ts)):''}
+function nz(ts){if(!ts)return '';var d=new Date(ts);return isNaN(d)?'':d.toISOString()}
+function dueOn(day0,days){var d=pd(day0),n=0;while(d.getDay()===0||d.getDay()===6)d.setDate(d.getDate()+1);while(n<days){d.setDate(d.getDate()+1);if(d.getDay()!==0&&d.getDay()!==6)n++}return iso(d)}
+function fmt(s){return s?pd(s).toLocaleDateString(undefined,{month:'short',day:'numeric'}):'-'}
+function fmtLong(s){return s?pd(s).toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'}):'-'}
+function addr(s){var m=/<([^>]+)>/.exec(s||'');return ((m?m[1]:s)||'').trim().toLowerCase()}
+function dom(a){return (String(a).split('@')[1]||'').toLowerCase()}
+function unq(s){var t=document.createElement('textarea');t.innerHTML=s||'';return t.value}
+var TODAY=iso(new Date());
+var AUTO=/^\s*(\[[^\]]*\]\s*)*(automatic reply|auto(matic)?[- ]?(reply|response)|out of (the )?office|autoreply)/i;
+var STATUS={};D.statuses.forEach(function(s){STATUS[s.name]=s});
+var DERIVED=D.ui.derived;
+var STOPS=D.ui.stops;
+var byEmail={},byKey={};D.pipeline.forEach(function(p){if(p.email)byEmail[p.email]=p;byKey[p.key]=p});
+function capToday(){if(!D.first_push)return D.cfg.ramp[0];var w=Math.floor((pd(TODAY)-pd(D.first_push))/(7*864e5));return D.cfg.ramp[Math.max(0,Math.min(w,D.cfg.ramp.length-1))]}
+
+
+function threads(){
+  var T={};
+  D.cadence.forEach(function(c){
+    T[c.email]={email:c.email,key:c.key,firm:c.firm,to:c.to,phone:c.phone,seat:c.seat,posted:c.posted,age:c.age,variant:c.variant,kind:c.kind,
+      sent:c.touches.filter(function(t){return t.sent}).map(function(t){return nz(t.sent)}).sort(),
+      drafted:c.touches.some(function(t){return !t.sent&&t.drafted}),subject:c.subject,body:c.body,calls:c.calls,calld:c.calld||{},
+      replied:nz(c.replied),lastReply:nz(c.replied),replyText:'',reply:c.reply,opted:c.opted,bounced:c.bounced,ended:c.ended,next:c.next_action,auto:/auto-reply/.test(c.notes)?c.notes:''};
+  });
+  var L=S.live; if(!L) return T;
+  Object.keys(L.sentTo).forEach(function(a){
+    var p=byEmail[a],t=T[a];
+    if(!t){ if(!p) return; var m=L.sentTo[a][0];
+      t=T[a]={email:a,key:p.key,firm:p.firm,to:(unq(m.preview).split(',')[0]||'').slice(0,24),phone:p.phone,seat:p.seat,posted:p.posted,age:'',variant:'',kind:'cold',
+        sent:[],drafted:false,subject:m.subject,body:unq(m.preview)+' …',calls:{},replied:'',lastReply:'',replyText:'',reply:'',opted:false,bounced:false,ended:false,next:'',auto:''}; }
+    t.sent=L.sentTo[a].map(function(m){return m.ts}).sort();
+  });
+  Object.keys(T).forEach(function(a){T[a].draft=!!L.draftTo[a]});
+  L.inbox.forEach(function(m){
+    var from=addr(m.sender); if(from===ME) return;
+    if(/mailer-daemon|postmaster/.test(from)){Object.keys(T).forEach(function(a){if(unq(m.preview).toLowerCase().indexOf(a)>=0)T[a].bounced=true});return}
+    var cand=T[from]?[T[from]]:Object.keys(T).map(function(a){return T[a]}).filter(function(t){return dom(t.email)===dom(from)&&t.sent.length});
+    if(!cand.length) return;
+    var t=cand.sort(function(x,y){return (y.sent[0]||'')<(x.sent[0]||'')?-1:1})[0];
+    if(!t.sent.length||m.ts<t.sent[0]) return;
+    if(AUTO.test(m.subject||'')){t.auto='Out of office '+fmt(localDay(m.ts))+': '+unq(m.preview).slice(0,220);return}
+    if(!t.replied||m.ts<t.replied){t.replied=m.ts;t.replyText=unq(m.preview);t.replyFrom=from}
+    if(!t.lastReply||m.ts>t.lastReply)t.lastReply=m.ts;   
+  });
+  return T;
+}
+function doc(k){return S.docs.pipeline[k]||null}
+function oid(k,slot){return k+'~'+slot}            
+function odoc(k,slot){return S.docs.outcomes[oid(k,slot)]||null}
+function outcome(k,slot){var d=odoc(k,slot);return d?(d.outcome||''):''}
+function addBiz(n){var d=pd(TODAY),c=0;while(c<n){d.setDate(d.getDate()+1);if(d.getDay()!==0&&d.getDay()!==6)c++}return iso(d)}
+
+function cbRaw(p){var d=doc(p.key);return d&&d.callback!=null?{date:d.callback||'',at:d.callback_at||(d.callback?d.at:'')||''}:{date:p.hcallback||'',at:p.hcallback_at||''}}
+function cbOf(p){var r=cbRaw(p);return /^\d{4}-\d{2}-\d{2}$/.test(r.date)?{date:r.date,at:nz(r.at)}:null}
+
+function cbState(p,t){
+  var cb=cbOf(p);if(!cb)return null;
+  var o=['1','2','cb'].map(function(s){return odoc(p.key,s)}).filter(function(d){var w=d&&nz(d.edited||d.at);return d&&d.outcome&&w>cb.at&&localDay(w)>=cb.date})[0];
+  
+  if(!o&&t&&t.calld)o=['1','2'].map(function(s){return t.calls[s]&&t.calld[s]&&t.calld[s]>=cb.date&&t.calld[s]>=localDay(cb.at)?{outcome:t.calls[s]}:null}).filter(Boolean)[0];
+  cb.why=(t&&t.opted)||statusOf(p,S.T||{}).name===D.ui.n.s_dnc?D.ui.n.s_dnc.toLowerCase():(t&&t.lastReply&&t.lastReply>cb.at?'they replied '+fmt(localDay(t.lastReply)):(o?'a call was logged ('+o.outcome+')':''));
+  return cb;
+}
+
+function cbWait(t){var p=byKey[t.key]||byEmail[t.email],c=p&&cbOpen(p,t);return c&&c.date>=TODAY?'<span class="pill">Waiting on the call-back '+fmt(c.date)+'</span>':''}
+function cbOpen(p,t){var cb=cbState(p,t);return cb&&!cb.why?cb:null}
+function cbDue(p,t){var cb=cbOpen(p,t);return cb&&cb.date<=TODAY?cb:null}
+function stub(p){return {email:p.email||'',key:p.key,firm:p.firm,to:p.partner||'',phone:p.phone||'',seat:p.seat||'',posted:p.posted||'',age:'',variant:'',kind:'cold',
+  sent:[],drafted:false,subject:'',body:'',calls:{},replied:'',lastReply:'',replyText:'',reply:'',opted:false,bounced:false,ended:false,next:'',auto:''}}
+function stepsOf(t){
+  if(!t.sent.length)return [];
+  var p=byEmail[t.email]||{key:t.key},k=p.key,day0=localDay(t.sent[0]),out=[];
+  D.cfg.call.forEach(function(dd,i){var n=i+1,slot=String(n),d=odoc(k,slot),o=d?(d.outcome||''):((t.calls&&t.calls[slot])||'');
+    out.push({kind:'call',n:n,slot:slot,day:dd,due:dueOn(day0,dd),done:!!o,outcome:o,at:d&&d.at})});
+  D.cfg.email.slice(1).forEach(function(dd,i){var n=i+2,slot='email-'+n,o=outcome(k,slot);
+    out.push({kind:'email',n:n,slot:slot,day:dd,due:dueOn(day0,dd),done:t.sent.length>=n||!!o,sentOn:t.sent[n-1]?localDay(t.sent[n-1]):'',outcome:o})});
+  return out.sort(function(a,b){return a.due<b.due?-1:(a.due>b.due?1:(a.kind==='call'?-1:1))});
+}
+function active(t,p){var st=statusOf(p,S.T).name;return !(t.replied||t.bounced||t.opted||t.ended||STOPS[st])}
+function nextStep(t){var p=byEmail[t.email]||{key:t.key};if(!active(t,p))return null;return stepsOf(t).filter(function(x){return !x.done})[0]||null}
+function stepName(s){return s.slot==='cb'?'Call back':(s.kind==='call'?'Call ':'Email ')+s.n}
+function statusOf(p,T){
+  var d=doc(p.key); if(d&&d.status) return {name:d.status,auto:false};
+  if(p.hstatus) return {name:p.hstatus,auto:false};
+  var t=p.email&&T[p.email];
+  if(t){ if(t.bounced) return {name:D.ui.n.s_bad,auto:true}; if(t.replied) return {name:D.ui.n.s_replied,auto:true}; if(t.sent.length) return {name:D.ui.n.s_emailing,auto:true}; }
+  return {name:D.ui.n.s_new,auto:true};
+}
+function notesOf(p){var d=doc(p.key);return d&&d.notes!=null?d.notes:(p.hnotes||'')}
+function tone(name){if(DERIVED[name])return DERIVED[name];var s=STATUS[name];if(!s)return 'mute';if(name===D.ui.n.s_hot)return 'warn';return s.tone}
+function pill(st){return '<span class="pill '+(st.auto?'auto':tone(st.name))+'">'+esc(st.name)+'</span>'}
+function statusSelect(id,cur){
+  var g={},h='<select id="'+id+'" aria-label="Status"><option value="">Pick a status…</option>';
+  D.statuses.forEach(function(s){(g[s.group]=g[s.group]||[]).push(s)});
+  Object.keys(g).forEach(function(k){h+='<optgroup label="'+esc(k)+'">'+g[k].map(function(s){return '<option value="'+esc(s.name)+'"'+(s.name===cur?' selected':'')+' title="'+esc(s.meaning)+'">'+esc(s.name)+'</option>'}).join('')+'</optgroup>'});
+  return h+'</select>';
+}
+
+
+function cardFor(t,kind,extra,logged){
+  var p=byEmail[t.email]||byKey[t.key]||{key:t.key,firm:t.firm},k=p.key,slot=extra.slot,cur=outcome(k,slot);
+  var opts=D.outcomes[kind].map(function(o){return '<option value="'+esc(o)+'"'+(cur===o?' selected':'')+'>'+esc(o)+'</option>'}).join('');
+  var st=statusOf(p,S.T),nx=nextStep(t),od=odoc(k,slot);
+  var meta=esc(t.seat||'-')+(t.posted?' · posted '+fmt(t.posted):'')+(t.sent.length?' · emailed '+fmt(localDay(t.sent[0])):'')+(t.variant?' · '+esc(t.variant):'')+(t.kind==='post-call'?' · post-call':'');
+  var next=nx?'<div class="meta" style="margin-top:4px">Next: <b style="color:var(--ink)">'+stepName(nx)+'</b> · '+fmtLong(nx.due)+(nx.kind==='call'&&t.phone?' · '+esc(t.phone):'')+'</div>':'';
+  var mid='';
+  if(kind==='call') mid=(t.phone?'<div class="big"><a href="tel:'+esc(String(t.phone).replace(/[^0-9+]/g,''))+'">'+esc(t.phone)+'</a></div>':'<div class="big">no phone on file</div>')+'<div class="meta">'+(slot==='cb'?'Call back'+(extra.cb?' set for '+fmtLong(extra.cb):''):'Call '+extra.n+' · day '+extra.day+' · due '+fmt(extra.due))+(extra.due<TODAY&&!logged?' <span class="pill warn">overdue</span>':'')+'</div>'+
+    (extra.cb&&slot!=='cb'?'<div class="meta">Call back set for '+fmtLong(extra.cb)+(extra.cb<TODAY&&!logged?' <span class="pill warn">overdue</span>':'')+'</div>':'')+
+    (logged&&od?'<div class="meta">Logged '+new Date(od.at).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})+'. Change it here any time.</div>':'');
+  if(kind==='email') mid='<div class="meta">Email '+extra.n+' · day '+extra.day+' · due '+fmt(extra.due)+'</div>'+(t.draft?'<span class="pill good">In Gmail Drafts</span>':(cbWait(t)||'<span class="pill warn">Not drafted yet</span>'));
+  if(kind==='reply') mid='<div class="meta">'+esc(t.replyFrom||t.email)+' · '+fmt(localDay(t.replied))+'</div><div class="meta" style="margin-top:6px;color:var(--ink)">'+esc((t.replyText||'Reply in the mailbox.').slice(0,240))+'</div>';
+  if(kind==='draft') mid='<div class="meta">'+esc(t.email)+'</div><span class="pill good">In Gmail Drafts</span>';
+  var mail=t.body?'<details class="mail"><summary>'+(t.sent.length?'Email that went out':'The draft')+'</summary><pre>'+esc(t.subject)+'\n\n'+esc(t.body)+'</pre></details>':'';
+  return '<div class="card"><div><div class="who">'+esc(t.to||'-')+' · '+esc(t.firm)+' '+pill(st)+'</div><div class="meta">'+meta+'</div>'+(t.auto?'<div class="meta" style="margin-top:4px">'+esc(t.auto.slice(0,200))+'</div>':'')+next+mail+'</div>'+
+    '<div>'+mid+'</div>'+controls(k,slot,kind,t,p,logged)+'</div>';
+}
+
+function controls(k,slot,kind,t,p,logged){
+  
+  var pk=oid(k,slot)+(logged?'~log':''),pend=S.pending[pk],o0=slot==='cb'&&!logged?'':outcome(k,slot),ov=pend?pend.outcome:o0,nv=pend&&pend.notes!=null?pend.notes:notesOf(p);
+  var cbk=(kind==='call'||kind==='reply')&&!(t&&t.opted)&&statusOf(p,S.T||{}).name!==D.ui.n.s_dnc,cb0=cbk?((cbOpen(p,t)||{}).date||''):'',cv=pend&&pend.callback!=null?pend.callback:cb0;
+  var opts=D.outcomes[kind].map(function(o){return '<option value="'+esc(o)+'"'+(ov===o?' selected':'')+'>'+esc(o)+'</option>'}).join('');
+  return '<div class="ctl" data-card="'+esc(pk)+'"><select data-key="'+esc(k)+'" data-slot="'+esc(slot)+'" data-email="'+esc(t.email)+'"'+(slot==='cb'?' data-o0="'+esc(o0)+'"':'')+' id="oc-'+esc(pk)+'" aria-label="Outcome"><option value="">Outcome…</option>'+opts+'</select>'+
+    '<textarea data-notes="'+esc(k)+'" id="tn-'+esc(pk)+'" placeholder="Notes for '+esc(t.firm)+'">'+esc(nv)+'</textarea>'+
+    (cbk?'<div class="cbrow"><label for="cb-'+esc(pk)+'">Call back on</label><input type="date" data-cb="'+esc(k)+'" data-cb0="'+esc(cb0)+'" id="cb-'+esc(pk)+'" value="'+esc(cv)+'"><button class="btn cbclear" type="button">Clear</button></div>':'')+
+    '<div class="savebar"><button class="btn primary save" type="button"'+(pend?'':' disabled')+'>Save</button><span class="saved" style="color:var(--warn)">'+(pend?'Unsaved changes':'')+'</span></div></div>';
+}
+function renderToday(){
+  var T=S.T,calls=[],fus=[],reps=[],drafts=[],logged=[],soon=[],sentToday=0,horizon=addBiz(5);
+  
+  function cbPush(t,cb,pc){
+    if(!cb)return;
+    if(cb.date<=TODAY){if(pc)pc.cb=cb.date;else calls.push(cardFor(t,'call',{kind:'call',slot:'cb',n:'back',day:'',due:cb.date,cb:cb.date}))}
+    else if(cb.date<=horizon)soon.push({t:t,s:{kind:'call',slot:'cb',n:'back',day:'',due:cb.date,cb:cb.date}});
+  }
+  Object.keys(T).forEach(function(a){
+    var t=T[a],p=byEmail[a]||{key:t.key},cb=cbOpen(p,t);
+    t.sent.forEach(function(ts){if(localDay(ts)===TODAY)sentToday++});
+    if(!t.sent.length){if(t.draft||(!S.live&&t.drafted))drafts.push(cardFor(t,'draft',{slot:'draft'}));cbPush(t,cb);return}
+    if(t.replied&&!outcome(p.key,'reply')) reps.push(cardFor(t,'reply',{slot:'reply'}));
+    if(!active(t,p)){cbPush(t,cb);return}
+    var st=stepsOf(t);
+    var pc=st.filter(function(x){return x.kind==='call'&&!x.done&&x.due<=TODAY})[0];
+    cbPush(t,cb,pc);
+    if(pc)calls.push(cardFor(t,'call',pc));
+    var ne=st.filter(function(x){return x.kind==='email'&&!x.done})[0];
+    if(ne&&ne.due<=TODAY)fus.push(cardFor(t,'email',ne));
+    st.filter(function(x){return !x.done&&x.due>TODAY&&x.due<=horizon}).forEach(function(x){soon.push({t:t,s:x})});
+  });
+  var cbSeen={};D.pipeline.forEach(function(p){if(cbSeen[p.key]||(p.email&&T[p.email]))return;cbSeen[p.key]=1;cbPush(stub(p),cbOpen(p,null))});   
+  
+  Object.keys(S.docs.outcomes).forEach(function(id){
+    var d=S.docs.outcomes[id];if(!d||!d.outcome||!d.at||localDay(d.at)!==TODAY)return;
+    var slot=String(d.slot),t=T[(d.email||'').toLowerCase()]||(slot==='cb'&&byKey[d.key]?stub(byKey[d.key]):null);if(!t)return;
+    var kind=/^\d+$/.test(slot)||slot==='cb'?'call':(slot==='reply'?'reply':(slot==='draft'?'draft':'email'));
+    var cbd=slot==='cb'?((cbOf(byKey[d.key]||{key:d.key})||{}).date||''):'';
+    var s=stepsOf(t).filter(function(x){return x.slot===slot})[0]||(slot==='cb'?{kind:'call',slot:'cb',n:'back',day:'',due:cbd,cb:cbd}:{slot:slot,n:slot,day:'',due:''});
+    logged.push({at:d.at,html:cardFor(t,kind,s,true)});
+  });
+  logged.sort(function(a,b){return a.at<b.at?1:-1});
+  soon.sort(function(a,b){return a.s.due<b.s.due?-1:(a.s.due>b.s.due?1:0)});
+  var cap=capToday();
+  $('#t-date').textContent='Today · '+new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
+  function sec(id,title,items,none){return '<h2 id="'+id+'">'+title+' <span class="n">'+items.length+'</span></h2><div class="cards">'+(items.length?items.join(''):'<div class="empty">'+none+'</div>')+'</div>'}
+  $('#t-sum').innerHTML=[['#s-calls','Calls due',calls.length],['#s-fu','Follow-up emails due',fus.length],['#s-rep','Replies waiting',reps.length],['#s-new','New emails to send',drafts.length],['#s-log','Logged today',logged.length]].map(function(x){return '<a href="'+x[0]+'"><div class="tk">'+x[1]+'</div><div class="tv">'+x[2]+'</div></a>'}).join('')+
+    '<a href="#s-new"><div class="tk">Sent today</div><div class="tv">'+sentToday+' <span class="muted" style="font-size:.9rem">of '+cap+'</span></div><div class="ts '+(sentToday>=cap?'good':'warn')+'">'+(S.live?'live from the mailbox':'as of the last build')+'</div></a>';
+  var soonRows=soon.map(function(x){var t=x.t;return '<div class="soon"><span class="sd">'+fmtLong(x.s.due)+'</span><span><span class="dotc '+(x.s.kind==='call'?'warn':'info')+'"></span> '+stepName(x.s)+'</span><span class="sf">'+esc(t.to||'-')+' · '+esc(t.firm)+'</span><span class="muted">'+(x.s.kind==='call'?esc(t.phone||''):'drafts that morning')+'</span></div>'});
+  $('#t-body').innerHTML=sec('s-calls','Calls due',calls,D.ui.n.l_nocalls)+
+    sec('s-fu','Follow-up emails due',fus,'No follow-ups due. Run Email Drafts when one shows here.')+
+    sec('s-rep','Replies waiting',reps,'No replies waiting. A reply lands here within a refresh.')+
+    sec('s-new','New emails to send today',drafts,'Nothing in Gmail Drafts. Run Email Drafts to make today’s.')+
+    sec('s-log','Logged today',logged.map(function(x){return x.html}),'Nothing logged yet today. Anything you log stays here, and you can change it.')+
+    '<h2 id="s-soon">Coming up, next 5 business days <span class="n">'+soon.length+'</span></h2><div class="panel">'+(soonRows.length?soonRows.join(''):'<div class="muted">Nothing scheduled.</div>')+'</div>';
+  bindCards($('#t-body'));
+}
+
+
+function renderPipeline(){
+  var T=S.T,q=($('#pq').value||'').toLowerCase(),sf=$('#pst').value,counts={},rows=[];
+  var list=D.pipeline.map(function(p){var st=statusOf(p,T);counts[st.name]=(counts[st.name]||0)+1;
+    var yours=!st.auto||(T[p.email]&&T[p.email].sent.length)||!!notesOf(p);
+    return {p:p,st:st,tier:yours?0:(p.fit.indexOf('fits')===0?1:2)}});
+  var order=D.ui.order;
+  list.sort(function(a,b){return a.tier-b.tier||order.indexOf(a.st.name)-order.indexOf(b.st.name)||(b.p.score-a.p.score)||a.p.firm.localeCompare(b.p.firm)});
+  var segN={yours:0,fits:0,held:0,all:list.length};list.forEach(function(x){segN[['yours','fits','held'][x.tier]]++});
+  $$('.seg button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.seg===S.seg);b.querySelector('span').textContent=segN[b.dataset.seg]});
+  list.forEach(function(x){
+    var p=x.p;if(S.seg!=='all'&&['yours','fits','held'][x.tier]!==S.seg)return;if(sf&&x.st.name!==sf)return;
+    var n=notesOf(p);if(q&&(p.firm+' '+p.partner+' '+p.city+' '+p.law+' '+p.seat+' '+n).toLowerCase().indexOf(q)<0)return;
+    var fitTone=p.fit==='fits'?'good':(p.fit.indexOf('fits')===0?'warn':'');
+    rows.push('<div class="prow pgrid" tabindex="0" role="button" data-key="'+esc(p.key)+'" aria-label="Open '+esc(p.firm)+'">'+
+      '<div><div class="pf">'+esc(p.firm)+'</div><div class="ps">'+esc([p.partner,p.phone].filter(Boolean).join(' · '))+'</div></div>'+
+      '<div class="pc c-city">'+esc(p.city)+(p.state?', '+esc(p.state):'')+'</div><div class="pc c-law">'+esc(p.law||'-')+'</div>'+
+      '<div class="c-why"><div class="pc" style="color:var(--ink)">'+esc(p.seat||'-')+'</div><div class="ps"><span class="dotc '+fitTone+'"></span> '+esc(p.fit)+' · '+esc(p.size||'?')+' att'+(p.posted?' · posted '+fmt(p.posted):'')+'</div></div>'+
+      '<div class="pc c-post">'+(p.post_url?'<a href="'+esc(p.post_url)+'" target="_blank" rel="noopener" data-stop="1">Posting ↗</a>':'-')+'</div>'+
+      '<div>'+pill(x.st)+(n?'<div class="pnote">'+esc(n)+'</div>':'')+'</div></div>');
+  });
+  $('#plist').innerHTML=rows.length?rows.join(''):'<div class="empty">No firms match.</div>';
+  var opts='<option value="">Every status</option>'+order.filter(function(s){return counts[s]}).map(function(s){return '<option value="'+esc(s)+'"'+(s===sf?' selected':'')+'>'+esc(s)+' · '+counts[s]+'</option>'}).join('');
+  $('#pst').innerHTML=opts;
+  $('#pcounts').innerHTML=order.filter(function(s){return counts[s]}).map(function(s){return pill({name:s,auto:!!DERIVED[s]})+' <b style="font-family:var(--display);margin-right:10px">'+counts[s]+'</b>'}).join('');
+}
+function openDrawer(key){
+  var p=byKey[key];if(!p)return;S.drawer=key;var T=S.T,t=p.email&&T[p.email],st=statusOf(p,T);
+  var h=[],touches='',rows=[],cbs=cbState(p,t||null),cb0=cbs&&!cbs.why?cbs.date:'';
+  if(t){
+    
+    rows=[['','Email 1',t.sent[0]?'Sent '+fmtLong(localDay(t.sent[0])):'Not sent','']];
+    stepsOf(t).forEach(function(s){
+      if(s.kind==='email')rows.push([s.due,stepName(s),s.sentOn?'Sent '+fmtLong(s.sentOn):(s.outcome?s.outcome:(s.due<=TODAY?'Due':'Due '+fmtLong(s.due))),'']);
+      else rows.push([s.due,stepName(s),'Due '+fmtLong(s.due),'<select data-key="'+esc(p.key)+'" data-slot="'+s.slot+'" data-email="'+esc(p.email)+'" id="doc-'+s.slot+'" aria-label="'+stepName(s)+' outcome"><option value="">'+(s.due<=TODAY?'Outcome…':'Not yet')+'</option>'+D.outcomes.call.map(function(o){return '<option value="'+esc(o)+'"'+(s.outcome===o?' selected':'')+'>'+esc(o)+'</option>'}).join('')+'</select>']);
+    });
+    if(t.replied)rows.push([localDay(t.replied),'Reply','Replied '+fmtLong(localDay(t.replied))+': '+(t.replyText||'').slice(0,120),'<select data-key="'+esc(p.key)+'" data-slot="reply" data-email="'+esc(p.email)+'" id="doc-reply" aria-label="Reply outcome"><option value="">Outcome…</option>'+D.outcomes.reply.map(function(o){return '<option value="'+esc(o)+'"'+(outcome(p.key,'reply')===o?' selected':'')+'>'+esc(o)+'</option>'}).join('')+'</select>']);
+    if(t.auto)h.push(['',t.auto.slice(0,200)]);if(t.bounced)h.push(['','Bounced: the address did not accept mail']);if(t.next)h.push(['',t.next]);
+  }
+  
+  if(cbs)rows.push([cbs.date,'Call back',cbs.why?fmtLong(cbs.date)+' · closed: '+cbs.why:'Due '+fmtLong(cbs.date)+(cbs.date<TODAY?' · overdue':''),'']);
+  if(rows.length)touches='<div class="dsec"><div class="lab">'+(t?'The cadence, touch by touch':'Call back')+'</div><div class="touches">'+rows.map(function(r){return '<div class="touch"><b>'+esc(r[1])+'</b><span class="muted">'+esc(r[2])+'</span><span>'+r[3]+'</span></div>'}).join('')+'</div></div>';
+  var hist=(h.length?h.map(function(x){return '<div><time>'+(x[0]?fmt(x[0]):'')+'</time><span>'+esc(x[1])+'</span></div>'}).join(''):(t?'':'<div class="muted">Not contacted from this mailbox yet.</div>'));
+  $('#drawer').innerHTML='<div class="dh"><div><div class="eyebrow">'+esc([p.city,p.state].filter(Boolean).join(', ')||'Firm')+'</div><h3 id="dtitle">'+esc(p.firm)+'</h3><div class="muted small" style="margin-top:4px">'+esc(p.law||D.ui.n.l_practice)+'</div></div><button class="btn" id="dclose" aria-label="Close">Close</button></div>'+
+    '<div class="dsec"><div class="lab">Status and notes</div><div style="display:grid;gap:8px">'+statusSelect('dstatus',st.auto?'':st.name)+'<div class="muted small" id="dmeaning">'+esc(STATUS[st.name]?STATUS[st.name].meaning:(st.auto?'Set by the page until you pick one.':''))+'</div>'+
+      '<textarea id="dnotes" placeholder="Notes">'+esc(notesOf(p))+'</textarea>'+
+      '<div class="cbrow"><label for="dcb">Call back on</label><input type="date" id="dcb" value="'+esc(cb0)+'"><button class="btn" type="button" id="dcbclear">Clear</button></div></div></div>'+
+    '<div class="dsec"><div class="lab">Contact</div><div class="kv">'+(p.partner?'<span>Partner</span><span>'+esc(p.partner)+'</span>':'')+
+      (p.phone?'<span>Phone</span><span><a class="sel" href="tel:'+esc(String(p.phone).replace(/[^0-9+]/g,''))+'">'+esc(p.phone)+'</a><button class="copy" data-copy="'+esc(p.phone)+'">Copy</button></span>':'')+
+      (p.email?'<span>Email</span><span><span class="sel">'+esc(p.email)+'</span><button class="copy" data-copy="'+esc(p.email)+'">Copy</button></span>':'<span>Email</span><span class="muted">None published</span>')+
+      (p.website?'<span>Website</span><span><a href="'+esc(p.website)+'" target="_blank" rel="noopener">'+esc(p.website.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))+' ↗</a></span>':'')+'</div></div>'+
+    '<div class="dsec"><div class="lab">Why it is here</div><div class="kv"><span>Seat</span><span>'+esc(p.seat||'-')+'</span><span>Posted</span><span>'+esc(p.posted?fmtLong(p.posted):'-')+'</span>'+
+      '<span>'+esc(D.ui.n.l_attorneys)+'</span><span>'+esc(p.size||'not read')+'</span><span>Gates</span><span>'+esc(p.fit)+(p.hold&&p.fit.indexOf('fits')!==0?' · '+esc(p.hold):'')+'</span>'+
+      (p.post_url?'<span>Posting</span><span><a href="'+esc(p.post_url)+'" target="_blank" rel="noopener">Open the posting ↗</a></span>':'')+'</div></div>'+
+    touches+(hist?'<div class="dsec"><div class="lab">'+(t?'Also on record':'What we have done')+'</div><div class="hist">'+hist+'</div></div>':'')+
+    '<div class="dbar"><button class="btn primary" id="dsave" type="button" disabled>Save changes</button><span class="saved" id="dsaved"></span></div>';
+  $('#scrim').hidden=false;$('#drawer').hidden=false;$('#dclose').focus();S.drawerDirty=false;
+  $('#dclose').onclick=function(){closeDrawer()};
+  var btn=$('#dsave'),sv=$('#dsaved'),statusTouched=false;
+  var mark=function(){S.drawerDirty=true;btn.disabled=false;sv.textContent='Unsaved changes';sv.style.color='var(--warn)'};
+  $('#dstatus').onchange=function(){$('#dmeaning').textContent=STATUS[this.value]?STATUS[this.value].meaning:'';statusTouched=true;mark()};
+  $('#dnotes').oninput=mark;
+  $('#dcb').onchange=mark;$('#dcb').oninput=mark;$('#dcbclear').onclick=function(){$('#dcb').value='';mark()};
+  $$('#drawer select[data-slot]').forEach(function(s){s.onchange=mark});
+  btn.onclick=function(){
+    var cbv=$('#dcb').value;if($('#dcb').validity&&$('#dcb').validity.badInput){sv.textContent='Finish the call-back date, or Clear it.';sv.style.color='var(--bad)';return}
+    btn.disabled=true;sv.textContent='Saving…';sv.style.color='var(--mute)';
+    var chain=Promise.resolve(),nv=$('#dnotes').value,stv=$('#dstatus').value;
+    
+    $$('#drawer select[data-slot]').forEach(function(s){var slot=s.dataset.slot;if(s.value!==outcome(p.key,slot))chain=chain.then(function(){return writeOutcome(p,p.key,slot,p.email,s.value)})});
+    chain.then(function(){var patch={};if(nv!==notesOf(p))patch.notes=nv;if(statusTouched)patch.status=stv;if(cbv!==cb0)patch.callback=cbv;if(Object.keys(patch).length)return savePipe(p,patch)})
+      .then(function(){S.drawerDirty=false;S.dirty=true;toast('Saved: '+p.firm);openDrawer(p.key);$('#dsaved').textContent='Saved';$('#dsaved').style.color='var(--good)'})
+      .catch(function(e){btn.disabled=false;sv.textContent='Not saved ('+((e&&e.code)||'error')+'). Press Save again.';sv.style.color='var(--bad)'});
+  };
+  bindCopy($('#drawer'));
+  if(!S.db){$$('#drawer select, #drawer textarea, #drawer input[type=date], #dcbclear').forEach(function(x){x.disabled=true});sv.textContent='Saving works on the dashboard opened in your browser.';sv.style.color='var(--mute)'}
+}
+function closeDrawer(){
+  if(S.drawerDirty){S.drawerDirty=false;var sv=$('#dsaved');if(sv){sv.textContent='Unsaved changes. Save them, or close again to discard.';sv.style.color='var(--warn)'}return}
+  $('#scrim').hidden=true;$('#drawer').hidden=true;var k=S.drawer;S.drawer=null;if(S.dirty)renderAll();var r=k&&$('.prow[data-key="'+k+'"]');if(r)r.focus()}
+
+
+function renderEvents(){
+  var af=$('#eaud').value,sf=$('#estat').value,out=[],month='';
+  D.events.filter(function(e){return e.date>=TODAY}).sort(function(a,b){return a.date<b.date?-1:1}).forEach(function(e){
+    var d=S.docs.events[e.id],st=(d&&d.status)||e.status||'';
+    if(af&&e.aud!==af)return;if(sf&&(sf==='none'?st:st!==sf))return;
+    var m=pd(e.date).toLocaleDateString(undefined,{month:'long',year:'numeric'});if(m!==month){out.push('<div class="month">'+esc(m)+'</div>');month=m}
+    var cost=e.cost===''?'Cost not stated':(String(e.cost).match(/^[0-9.]+$/)?(+e.cost===0?'Free':'$'+Math.round(+e.cost)):e.cost);
+    var fit=+e.fit||0;
+    out.push('<div class="ev"><div class="leaf"><b>'+pd(e.date).getDate()+'</b><span>'+pd(e.date).toLocaleDateString(undefined,{weekday:'short'})+'</span></div>'+
+      '<div><div class="t">'+esc(e.event)+'</div><div class="m">'+esc(e.organizer)+'</div><div class="m">'+esc([e.venue.split(',')[0],e.city+(e.state?', '+e.state:'')].filter(Boolean).join(' · '))+'</div>'+(e.why?'<div class="w">'+esc(e.why)+'</div>':'')+'</div>'+
+      '<div class="aud"><div class="pc" style="color:var(--ink)">'+esc(e.audience)+'</div><div class="ps">'+esc(cost)+(e.size?' · '+esc(e.size):'')+'</div><div class="fitbar" style="margin-top:8px" title="Fit: audience × distance × cost, out of 27"><span class="bar"><i style="width:'+Math.round(100*fit/27)+'%"></i></span>Fit '+fit+'</div></div>'+
+      '<div class="links">'+(e.page?'<a href="'+esc(e.page)+'" target="_blank" rel="noopener">Event page ↗</a>':'')+(e.register&&e.register!==e.page?'<a href="'+esc(e.register)+'" target="_blank" rel="noopener">Register ↗</a>':'')+(e.sponsor?'<span class="muted small" title="'+esc(e.sponsor)+'">Sponsorship listed</span>':'')+'</div>'+
+      '<div class="evs"><select data-ev="'+esc(e.id)+'" id="ev-'+esc(e.id)+'" aria-label="Status"><option value="">Not decided</option>'+['going','skip','went'].map(function(o){return '<option value="'+o+'"'+(st===o?' selected':'')+'>'+o[0].toUpperCase()+o.slice(1)+'</option>'}).join('')+'</select><div class="saved" id="evs-'+esc(e.id)+'"></div></div></div>');
+  });
+  $('#elist').innerHTML=out.length?out.join(''):'<div class="empty">No events match.</div>';
+  $$('select[data-ev]').forEach(function(s){s.onchange=function(){if(!S.db)return;var id=s.dataset.ev;S.db.doc('events/'+id).set({id:id,status:s.value,at:new Date().toISOString()}).then(function(){$('#evs-'+id).textContent='Saved'}).catch(function(e){$('#evs-'+id).textContent='Not saved ('+((e&&e.code)||'error')+')'})};s.disabled=true;s.title='Read-only on this page'});
+}
+
+
+function renderKpis(){
+  var T=S.T,sent=0,today=0,rep=0,bnc=0,per={};
+  Object.keys(T).forEach(function(a){var t=T[a];if(!t.sent.length)return;sent++;if(t.replied)rep++;if(t.bounced)bnc++;t.sent.forEach(function(ts){var d=localDay(ts);per[d]=(per[d]||0)+1;if(d===TODAY)today++})});
+  if($('#k-sent')){$('#k-sent').textContent=sent;$('#k-today').textContent=today+' / '+capToday();$('#k-replies').textContent=rep;$('#k-bounces').textContent=bnc}
+  var days=[],d=pd(TODAY);d.setDate(d.getDate()-20);for(var i=0;i<21;i++){days.push(iso(d));d.setDate(d.getDate()+1)}
+  var mx=Math.max.apply(null,days.map(function(x){return per[x]||0}).concat([capToday(),1]));
+  $('#spark').innerHTML='<div class="cap" style="bottom:'+(100*capToday()/mx)+'%"></div>'+days.map(function(x){return '<i title="'+fmt(x)+': '+(per[x]||0)+'" style="height:'+(100*(per[x]||0)/mx)+'%"></i>'}).join('');
+  $('#spark-axis').innerHTML='<span>'+fmt(days[0])+'</span><span>'+fmt(days[10])+'</span><span>'+fmt(days[20])+'</span>';
+  $('#spark-cap').textContent='· dashed line: today’s cap of '+capToday();
+}
+
+
+function toast(msg){var t=$('#toast');t.textContent=msg;t.hidden=false;clearTimeout(toast.tm);toast.tm=setTimeout(function(){t.hidden=true},2400)}
+function savePipe(p,patch){
+  if(!S.db)return Promise.reject({code:'no_db'});
+  var c0=doc(p.key)||{},st=statusOf(p,S.T),cb=cbRaw(p),now=new Date().toISOString();
+  
+  var next={key:p.key,firm:p.firm,email:p.email,status:patch.status!=null?patch.status:(c0.status!=null?c0.status:(st.auto?'':st.name)),notes:patch.notes!=null?patch.notes:notesOf(p),
+    callback:patch.callback!=null?patch.callback:cb.date,callback_at:patch.callback!=null?now:cb.at,at:now};
+  return S.db.doc('pipeline/'+p.key).set(next).then(function(){S.docs.pipeline[p.key]=next});
+}
+
+function writeOutcome(p,k,slot,email,o){
+  var prev=odoc(k,slot);
+  var rec={key:k,email:email,firm:p.firm||'',slot:slot,outcome:o,at:(prev&&prev.at&&localDay(prev.at)===TODAY)?prev.at:new Date().toISOString(),edited:new Date().toISOString()};
+  return S.db.doc('outcomes/'+oid(k,slot)).set(rec).then(function(){S.docs.outcomes[oid(k,slot)]=rec;var ns=D.outcome_status[o];if(ns)return savePipe(p,{status:ns})});
+}
+function bindCards(root){
+  $$('.ctl[data-card]',root).forEach(function(box){
+    var s=box.querySelector('select[data-slot]'),t=box.querySelector('textarea[data-notes]'),c=box.querySelector('input[data-cb]'),cx=box.querySelector('button.cbclear'),b=box.querySelector('button.save'),sv=box.querySelector('.saved'),pk=box.dataset.card;
+    [s,t,c,cx].forEach(function(x){if(x)x.disabled=!S.db});if(!S.db){b.disabled=true;return}
+    var mark=function(){var bad=c&&c.validity&&c.validity.badInput,prev=S.pending[pk];   
+      S.pending[pk]={outcome:s.value,notes:t?t.value:null,callback:bad?(prev?prev.callback:null):(c&&c.value!==c.dataset.cb0?c.value:null)};b.disabled=false;sv.textContent='Unsaved changes';sv.style.color='var(--warn)'};
+    s.onchange=mark;if(t)t.oninput=mark;if(c){c.onchange=mark;c.oninput=mark}if(cx)cx.onclick=function(){c.value='';mark()};b.onclick=function(){commit(box)};
+  });
+}
+function commit(box){
+  var s=box.querySelector('select[data-slot]'),t=box.querySelector('textarea[data-notes]'),c=box.querySelector('input[data-cb]'),b=box.querySelector('button.save'),sv=box.querySelector('.saved');
+  var k=s.dataset.key,slot=s.dataset.slot,p=byKey[k]||{key:k,firm:'',email:s.dataset.email},o=s.value,n=t?t.value:null,pk=box.dataset.card,said=[],patch={};
+  if(c&&c.validity&&c.validity.badInput){sv.textContent='Finish the call-back date, or Clear it.';sv.style.color='var(--bad)';return}
+  b.disabled=true;sv.textContent='Saving…';sv.style.color='var(--mute)';
+  var chain=Promise.resolve(),o0=slot==='cb'?(s.dataset.o0||''):outcome(k,slot);
+  if(n!==null&&n!==notesOf(p)){patch.notes=n;said.push('notes')}
+  if(c&&c.value!==c.dataset.cb0){patch.callback=c.value;said.push(c.value?'call back '+fmtLong(c.value):'call back cleared')}
+  
+  if(o!==o0){chain=chain.then(function(){return writeOutcome(p,k,slot,s.dataset.email,o)});said.push(o||'outcome cleared')}
+  if(Object.keys(patch).length)chain=chain.then(function(){return savePipe(p,patch)});
+  chain.then(function(){delete S.pending[pk];var ns=o&&D.outcome_status[o];sv.textContent='Saved';sv.style.color='var(--good)';
+      toast(said.length?'Saved: '+said.join(' · ')+(ns&&said.indexOf(o)>=0?' · status '+ns:''):'Nothing to save');setTimeout(renderAll,700)})
+    .catch(function(e){b.disabled=false;sv.textContent='Not saved ('+((e&&e.code)||'error')+'). Press Save again.';sv.style.color='var(--bad)'});
+}
+function bindCopy(root){$$('.copy',root).forEach(function(b){b.onclick=function(){var v=b.dataset.copy;try{navigator.clipboard.writeText(v).then(function(){b.textContent='Copied'},function(){b.textContent='Select it'})}catch(e){b.textContent='Select it'}}})}
+
+function built(){return new Date(D.built).toLocaleString([], {month:'short',day:'numeric',hour:'numeric',minute:'2-digit'})}
+function setLive(state,msg){
+  S.liveState=state;S.liveMsg=msg||'';var el=$('#live'),b=$('#refresh');
+  el.className='live '+(state==='on'?'on':(state==='connect'||state==='warn'?'warn':''));
+  $('#live .lt').textContent={on:'Mailbox live · read '+(S.liveAt?new Date(S.liveAt).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'}):''),busy:'Reading the mailbox…',
+    connect:'Mailbox not connected',warn:'Mailbox not live',off:'Last build · '+built(),build:'Last build · '+built(),synced:'Mail as of the last sync · built '+built()}[state]||'';
+  b.textContent=state==='connect'?'Connect mailbox':(state==='warn'?'Try again':'Refresh');
+  b.disabled=(state==='busy'||state==='off'||state==='build');
+  b.title=state==='off'?'The mailbox cannot be read in this view; the page shows the last build.':'';
+  var show=state==='connect'||state==='warn';$('#banner').hidden=!show;
+  if(show)$('#banner').innerHTML='<b>'+(state==='connect'?'The mailbox is not connected to this page.':'The mailbox read failed.')+'</b> '+esc(msg)+
+    ' Today and the KPIs show the last build ('+esc(built())+') until it is. <button class="btn" type="button" id="banner-act" style="margin-left:8px">'+(state==='connect'?'Connect mailbox':'Try again')+'</button>';
+  var ba=$('#banner-act');if(ba)ba.onclick=liveAction;
+}
+function liveAction(){window.__orderRefresh()}
+
+function renderAll(){
+  var a=document.activeElement;if(a&&(a.tagName==='TEXTAREA'||(a.tagName==='SELECT'&&a.id!=='pst')||(a.tagName==='INPUT'&&a.type==='date'))&&!a.closest('#drawer')){S.dirty=true;return}
+  if(S.drawer&&!$('#drawer').hidden){S.dirty=true;S.T=threads();renderKpis();return}
+  S.dirty=false;S.T=threads();renderToday();renderPipeline();renderEvents();renderKpis();
+}
+document.addEventListener('focusout',function(){if(S.dirty)setTimeout(function(){if(S.dirty)renderAll()},300)});
+$$('.tab').forEach(function(b){b.onclick=function(){show(b.dataset.v)}});
+function show(v){$$('.tab').forEach(function(b){b.setAttribute('aria-selected',b.dataset.v===v)});$$('.view').forEach(function(s){s.hidden=s.id!=='v-'+v});try{localStorage.setItem('order.view',v)}catch(e){}window.scrollTo(0,0)}
+try{var sv=localStorage.getItem('order.view');if(sv&&$('#v-'+sv))show(sv)}catch(e){}
+$$('.seg button').forEach(function(b){b.onclick=function(){S.seg=b.dataset.seg;renderPipeline()}});
+$('#pq').oninput=renderPipeline;$('#pst').onchange=renderPipeline;$('#eaud').onchange=renderEvents;$('#estat').onchange=renderEvents;
+$('#plist').addEventListener('click',function(e){if(e.target.closest('[data-stop]'))return;var r=e.target.closest('.prow');if(r)openDrawer(r.dataset.key)});
+$('#plist').addEventListener('keydown',function(e){if((e.key==='Enter'||e.key===' ')&&e.target.classList.contains('prow')){e.preventDefault();openDrawer(e.target.dataset.key)}});
+$('#scrim').onclick=closeDrawer;document.addEventListener('keydown',function(e){if(e.key==='Escape'&&S.drawer)closeDrawer()});
+$('#refresh').onclick=function(){window.__orderRefresh()};
+
+setLive('build');renderAll();
+S.db=window.__ORDER_DB;
+[['pipeline','pipeline'],['outcomes','outcomes'],['events','events']].forEach(function(x){
+  S.db.collection(x[0]).onSnapshot(function(snap){snap.docs.forEach(function(d){S.docs[x[1]][d.id]=d.data()||{}});renderAll()},function(){});
+});
+renderAll();setLive('synced');
+})();
+};
+
+(function(){
+'use strict';
+if(window.top!==window.self){document.documentElement.innerHTML='';return}   /* framed by another site: show nothing (no header can carry frame-ancestors on Pages) */
+var CFG=JSON.parse(document.getElementById('desk-config').textContent);
+var HASH=location.hash||'';
+function storedSession(){try{for(var i=0;i<localStorage.length;i++){if(/^sb-.*-auth-token$/.test(localStorage.key(i)||''))return true}}catch(x){}return false}
+/* an expired or already-used link (#error_code=...) opened while signed in must not sign this device out, and a crafted link
+   (#access_token=...) opened while signed in must not replace this device's stored session with a stranger's: the client never
+   sees the query or the hash (gotrue-js 2.68.0 merges query parameters into the callback and drops the stored session when
+   that callback fails); HASH keeps its text for hashError()'s message. A discarded link's own session is ended on the server
+   first (logout, scope local, with that link's token), so no orphan session is left for approve or members-audit to refuse on. */
+if(/[?#&](access_token|refresh_token|error|error_code|error_description)=/.test(location.search+HASH)&&storedSession()){
+  var LINK=/[#&]access_token=([^&]*)/.exec(HASH);
+  if(LINK&&LINK[1]){try{fetch(CFG.url.replace(/\/+$/,'')+'/auth/v1/logout?scope=local',{method:'POST',keepalive:true,
+    headers:{apikey:CFG.key,Authorization:'Bearer '+dec(LINK[1])}}).catch(function(){})}catch(x){}}
+  try{history.replaceState(null,'',location.pathname)}catch(x){location.hash=''}}
+var sb=window.supabase.createClient(CFG.url,CFG.key,{auth:{flowType:'implicit',detectSessionInUrl:true,persistSession:true,autoRefreshToken:true}});
+var REC=[],OUT=[];   /* the document columns, from desk_page.data.cols (records.py's lists), set when the data loads */
+var ME='',DATA=null,BUILT='',subs={pipeline:[],outcomes:[],events:[]},loaded={pipeline:false,outcomes:false};
+var ASK='Enter your address. A sign-in link will be emailed to it; open the link on the device you want to use.';
+var SENT='Sent. Open the link in that email on this device.';
+function q(s){return document.querySelector(s)}
+function msg(t){var m=q('#si-msg');if(m)m.textContent=t}
+function stat(t,bad){var s=q('#si-status');if(s){s.textContent=t||'';s.style.color=bad?'var(--bad)':'var(--mute)'}}
+function step(k){['email','sent','out'].forEach(function(x){var e=q('#si-step-'+x);if(e)e.hidden=x!==k})}
+function toast(t){var el=q('#toast');if(!el)return;el.textContent=t;el.hidden=false;clearTimeout(toast.tm);toast.tm=setTimeout(function(){el.hidden=true},4000)}
+function why(e){var c=(e&&e.code)||'',st=e&&e.status;
+  if(c==='email_address_not_authorized')return 'The sign-in service will not email this address yet. Tell Hayden.';
+  if(c==='over_email_send_rate_limit'||c==='over_request_rate_limit'||st===429)return 'Too many sign-in emails have gone out this hour. Use the newest link you have, or try again in an hour.';
+  if(c==='validation_failed')return 'That does not look like an email address.';
+  if(!st)return 'Could not reach the sign-in service. Check the connection and try again.';
+  return 'Sign-in did not work ('+(c||st)+'). Try again.'}
+function dec(s){try{return decodeURIComponent(s)}catch(x){return s}}   /* a crafted hash (%E0%A4%A) must not stop the boot */
+function hashError(){var m=/[#&]error_code=([^&]*)/.exec(HASH),d=/[#&]error_description=([^&]*)/.exec(HASH);if(!m&&!d)return '';
+  var c=m?dec(m[1]):'';if(c==='otp_expired')return 'That link has expired or was already used. Ask for a new one.';
+  return 'The link did not sign you in ('+(c||dec((d?d[1]:'').replace(/\+/g,' ')))+'). Ask for a new one.'}
+function clearHash(){if(location.hash){try{history.replaceState(null,'',location.pathname+location.search)}catch(x){location.hash=''}}}
+function safeHref(u){u=String(u||'');return /^https?:\/\//i.test(u)?u:''}   /* F.3: a scraped href is kept only when it is http(s) */
+/* ---- records: rows <-> the page's documents (NULL = the field is absent; extra holds any key the columns do not) ---- */
+function docOf(r,cols){var d={},x=r.extra,k;cols.forEach(function(c){if(r[c]!=null)d[c]=r[c]});if(x&&typeof x==='object'){for(k in x){if(cols.indexOf(k)<0)d[k]=x[k]}}return d}
+function snap(coll,rows){var cols=coll==='pipeline'?REC:OUT,idc=coll==='pipeline'?'key':'id';
+  return {docs:rows.map(function(r){return {id:r[idc],data:function(){return docOf(r,cols)}}})}}
+function deliver(coll,rows){var s=snap(coll,rows);subs[coll].forEach(function(fn){fn(s)})}
+function all(table,order){var out=[];   /* the data API returns at most 1000 rows a request: page through */
+  function page(from){return sb.from(table).select('*').order(order).range(from,from+999).then(function(r){
+    if(r.error)throw r.error;out=out.concat(r.data||[]);return (r.data||[]).length===1000?page(from+1000):out})}
+  return page(0)}
+var saves=0;   /* successful set() calls; a re-read that began before a save may hold rows older than it, so it never delivers over it */
+function reread(){var at=saves;return Promise.all([all('desk_records','key'),all('desk_outcomes','id')]).then(function(r){
+  if(saves!==at)return reread();   /* a save finished while this read was in flight: drop these rows and read again */
+  loaded.pipeline=true;deliver('pipeline',r[0]);loaded.outcomes=true;deliver('outcomes',r[1])})}
+function saveErr(r){var c=(r&&r.error&&r.error.code)||'',s=r&&r.status;
+  return {code:c==='42501'?'no permission':((c==='PGRST301'||s===401)?'signed out':(s?(c||String(s)):'offline'))}}
+var DB={
+  collection:function(name){return {onSnapshot:function(fn,err){
+    if(!subs[name])return function(){};
+    subs[name].push(fn);
+    if(name==='events'){fn({docs:(DATA.events_docs||[]).map(function(d){return {id:d.id,data:function(){return d}}})});return function(){}}
+    all(name==='pipeline'?'desk_records':'desk_outcomes',name==='pipeline'?'key':'id').then(function(rows){loaded[name]=true;fn(snap(name,rows))},function(e){if(err)err(e)});
+    return function(){}}}},
+  doc:function(path){var i=path.indexOf('/'),coll=path.slice(0,i),id=path.slice(i+1);return {set:function(obj){
+    var cols=coll==='pipeline'?REC:(coll==='outcomes'?OUT:null),row={},extra={},k;
+    if(!cols)return Promise.reject({code:'read only'});
+    if(!loaded.pipeline||!loaded.outcomes){toast('The records did not load. Press Refresh.');return Promise.reject({code:'not loaded'})}   /* F.1 */
+    for(k in obj){if(cols.indexOf(k)<0)extra[k]=obj[k]}   /* amendment E: a key without a column goes to extra, never dropped */
+    cols.forEach(function(c){row[c]=obj[c]==null?null:String(obj[c])});   /* a full replace, as .set() is on the Claude page */
+    row.extra=extra;
+    if(coll==='pipeline'){if(row.key!==id)return Promise.reject({code:'key mismatch'});row.updated_by=ME}
+    else{if(id!==row.key+'~'+row.slot)return Promise.reject({code:'id mismatch'});row.id=id;row.edited_by=ME}
+    return sb.from(coll==='pipeline'?'desk_records':'desk_outcomes').upsert(row,{onConflict:coll==='pipeline'?'key':'id'})
+      .then(function(r){if(r.error)throw saveErr(r);saves++},function(){throw {code:'offline'}})}}}};
+/* ---- live: realtime for the two tables, and a re-read whenever the tab comes back (F.2) ---- */
+var back=null;
+function again(){if(!back)back=reread().catch(function(){}).then(function(){back=null})}
+function live(){
+  sb.channel('desk-changes')
+    .on('postgres_changes',{event:'*',schema:'public',table:'desk_records'},function(p){if(p.new&&p.new.key)deliver('pipeline',[p.new])})
+    .on('postgres_changes',{event:'*',schema:'public',table:'desk_outcomes'},function(p){if(p.new&&p.new.id)deliver('outcomes',[p.new])})
+    .subscribe(function(s){if(s==='SUBSCRIBED')again()});
+  window.addEventListener('online',again);
+  window.addEventListener('focus',again);
+  document.addEventListener('visibilitychange',function(){if(!document.hidden)again()});
+}
+function unsaved(){return !!document.querySelector('.ctl .btn.save:not([disabled]), #dsave:not([disabled])')}
+function refresh(){var b=q('#refresh');b.disabled=true;
+  Promise.all([reread(),sb.from('desk_page').select('built_at').eq('id','current').maybeSingle()]).then(function(r){
+    b.disabled=false;var p=r[1];
+    if(p&&p.data&&p.data.built_at!==BUILT){if(unsaved()){toast('A newer build is in. Save or clear your changes, then press Refresh again.');return}location.reload();return}
+    toast('Reloaded.')},
+  function(){b.disabled=false;toast('Could not reach the data. Check the connection and press Refresh again.')})}
+/* ---- sign-in ---- */
+function signOut(){sb.auth.signOut({scope:'local'}).then(function(){location.reload()},function(){location.reload()})}   /* local: the other device stays signed in */
+function signedIn(session){
+  ME=String((session&&session.user&&session.user.email)||'').toLowerCase();
+  step('out');stat('');msg('Signed in as '+ME+'. Loading…');
+  sb.from('desk_members').select('email').eq('email',ME).maybeSingle().then(function(r){
+    if(r.error)throw r.error;
+    if(!r.data){msg('Signed in as '+ME+'. Waiting for Hayden to approve this address.');return}
+    return sb.from('desk_page').select('data,built_at').eq('id','current').maybeSingle().then(function(p){
+      if(p.error)throw p.error;
+      if(!p.data){msg('Signed in as '+ME+'. No data has been pushed yet.');return}
+      DATA=p.data.data;BUILT=p.data.built_at;REC=DATA.cols.pipeline;OUT=DATA.cols.outcomes;
+      (DATA.D.pipeline||[]).forEach(function(x){x.website=safeHref(x.website);x.post_url=safeHref(x.post_url)});
+      (DATA.D.events||[]).forEach(function(x){x.page=safeHref(x.page);x.register=safeHref(x.register)});
+      q('main').innerHTML=DATA.main_html;
+      q('.tabs').hidden=false;q('#live').hidden=false;q('#signout').onclick=signOut;
+      window.__ORDER_D=Object.assign({},DATA.D,{ui:DATA.ui});
+      window.__ORDER_DB=DB;window.__orderRefresh=refresh;
+      window.__orderStart();
+      var au=sb.realtime.setAuth(session.access_token);if(au&&au.catch)au.catch(function(){});   /* so the first phx_join carries the member's token, not the publishable key */
+      live();
+    });
+  }).catch(function(){var t='Signed in as '+ME+'. The data did not load. Refresh the page to try again.';msg(t);toast(t)});   /* F.5 */
+}
+q('#si-signout').onclick=signOut;
+q('#si-email-form').onsubmit=function(e){e.preventDefault();
+  var em=q('#si-email').value.trim().toLowerCase();
+  if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)){stat('That does not look like an email address.',true);return}
+  stat('Sending the link…');
+  sb.auth.signInWithOtp({email:em,options:{shouldCreateUser:true,emailRedirectTo:CFG.redirect}}).then(function(r){
+    if(r.error)throw r.error;step('sent');stat('');msg(SENT)
+  }).catch(function(x){stat(why(x),true)})};
+q('#si-back').onclick=function(){step('email');msg(ASK);stat('');q('#si-email').focus()};
+var herr=hashError();
+sb.auth.getSession().then(function(r){var s=r.data&&r.data.session;clearHash();if(s)signedIn(s);else{step('email');if(herr)stat(herr,true)}},function(){clearHash();step('email')});
+})();
+</script>
+</head><body></body></html>
