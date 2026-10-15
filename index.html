@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-9gGKdOI5i1Dd6V/f/KjBg59NFqc5xW8NcLG8kf+1YYg=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-Hhr8ucmpI54jKXkSXtUy7o+BbOwHIJNG5fH8TxhBvBk=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ffffff' stroke='%23e4e6ec' stroke-width='2'/%3E%3Ctext x='29' y='44' font-family='Arial,Helvetica,sans-serif' font-weight='700' font-size='36' text-anchor='middle' fill='%230e0f12'%3EO%3C/text%3E%3Ccircle cx='49' cy='41' r='5' fill='%232d6cdf'/%3E%3C/svg%3E"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" media="(max-width:760px)" content="#0e0f12"><meta name="theme-color" content="#ffffff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="Order"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
 :root{color-scheme:light;
@@ -131,6 +131,9 @@ details.mail pre{white-space:pre-wrap;font:inherit;font-size:.86rem;color:var(--
 .cal .chip{display:block;width:100%;text-align:left;border:0;background:var(--accent-soft);color:var(--ink);border-radius:6px;padding:2px 6px;margin-top:3px;font-size:.72rem;line-height:1.3;cursor:pointer;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .cal .chip.going{background:var(--good-soft)}.cal .chip.skip{background:var(--tint);color:var(--mute)}.cal .chip:hover{outline:1px solid var(--accent)}
 .ev.hl{border-color:var(--ink)}
+.brow,.bhead{display:grid;grid-template-columns:36px minmax(0,1.1fr) minmax(0,1.3fr) minmax(0,1.2fr);gap:8px 20px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start}
+.bhead{font-family:var(--display);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);padding:10px 0}
+.brow .bn b{font-family:var(--display);color:var(--mute)}.brow .who{font-family:var(--display);font-weight:600;font-size:1.02rem}.brow .meta{color:var(--ink2);font-size:.85rem;margin-top:2px}
 /* KPIs */
 .bar{height:6px;background:var(--tint);border-radius:999px;display:inline-block;overflow:hidden;vertical-align:middle;width:100%}.bar i{display:block;height:100%;background:linear-gradient(90deg,#2d6cdf,#8ab4f8);border-radius:999px}
 .frow{display:grid;grid-template-columns:minmax(170px,1fr) 2fr 56px 56px;gap:12px;align-items:center;font-size:.92rem;padding:9px 0;border-bottom:1px dashed var(--line)}.frow:last-of-type{border-bottom:0}
@@ -207,18 +210,56 @@ select,textarea,input[type=search],input[type=date],input[type=email],input[type
 .cal .d,.cal .chip,.leaf,.touch,details.mail pre,.toast,.seg,.queue button{border-radius:0}
 .prow{padding:12px 0}.prow:hover{background:var(--tint);border-color:var(--line)}
 .drawer{border-left:1px solid var(--ink);box-shadow:none}
-@media (max-width:960px){.onegrid{grid-template-columns:minmax(0,1fr)}.ql{display:none}.onegrid .card,.card{grid-template-columns:minmax(0,1fr)}.onegrid .card>.ctl,.onegrid .card>div:nth-child(2){grid-column:1;grid-row:auto}.win-tiles,.win-tiles.four{grid-template-columns:repeat(3,minmax(0,1fr))}.steps,.gtm{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* ---------- calm (2026-10-15): space, not rules; one accent; no orange ---------- */
+:root{--warn:#2d6cdf;--dot-act:#2d6cdf}
+h2{border-bottom:0;padding-bottom:0;margin:44px 0 14px}
+.head{border-bottom:0;padding-bottom:0;margin-bottom:28px}
+.onebar{border-bottom:0;padding:4px 0 12px}
+.card{border-bottom:0;padding:0 0 8px}
+.cards .card+.card{border-top:1px solid var(--line);padding-top:24px;margin-top:16px}
+.empty{border-bottom:0}
+.win{border:0;border-radius:4px;background:var(--tint);padding:4px 0}
+.win-tiles a,.tile{border-right:0}
+.win .spark{border-bottom:0}.win .ph{padding:16px 16px 0}
+.panel{border-bottom:0;padding:8px 0 24px}
+.frow{border-bottom:0;padding:8px 0}
+.frow.sub .bar i{background:var(--dim)}.spark .cap{border-top:1px dashed var(--mute);opacity:.7}
+td{border-bottom:0;padding:9px 12px 9px 0}th{border-bottom:1px solid var(--line)}
+.pill.warn i,.dotc.warn{background:var(--accent)}
+.chips .oc{color:var(--ink2)}
+/* the queue: under the open call, a quiet list */
+.onegrid{display:block}
+.ql{display:block;position:static;max-height:none;overflow:visible;border-right:0;margin-top:28px;column-count:2;column-gap:40px}
+.ql button{break-inside:avoid;border-bottom:0;padding:6px 0;grid-template-columns:30px minmax(0,1fr) auto}
+.ql button[aria-current=true]{background:transparent;color:var(--ink);font-weight:600}.ql button[aria-current=true] b,.ql button[aria-current=true] em{color:var(--accent)}
+.qlh{font-family:var(--display);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-top:28px}
+.onegrid .card{grid-template-columns:minmax(0,1.2fr) minmax(280px,1fr);gap:12px 40px}
+/* pipeline: one rule under the column heads, rows separated by space */
+.phead{border-bottom:1px solid var(--ink);margin-bottom:6px}
+.prow{border-bottom:1px solid var(--line)}
+/* game plan, rebuilt: a timeline and plain paragraphs */
+.tline{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0;position:relative}
+.tline:before{content:"";position:absolute;left:0;right:0;top:7px;height:1px;background:var(--line)}
+.tline li{position:relative;padding:26px 16px 0 0}
+.tline li:before{content:"";position:absolute;left:0;top:2px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--ink)}
+.tline li.call:before{background:var(--ink)}
+.tline b{display:block;font-family:var(--display);font-size:1.05rem;font-weight:600}.tline span{display:block;color:var(--ink2);font-size:.9rem;margin-top:2px}
+.tkey{display:flex;gap:20px;color:var(--mute);font-size:.85rem;margin-top:18px}.tkey i{display:inline-block;width:9px;height:9px;border-radius:50%;border:2px solid var(--ink);margin-right:6px;vertical-align:-1px}.tkey i.call{background:var(--ink)}
+.plan{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 64px;margin-top:8px}
+.plan h3{font-size:1.05rem;margin:0 0 6px}.plan p{margin:0;color:var(--ink2);max-width:60ch}.plan b{color:var(--ink);font-weight:600}
+@media (max-width:960px){.tline{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:28px}.plan{grid-template-columns:minmax(0,1fr)}.ql{column-count:1}.onegrid{grid-template-columns:minmax(0,1fr)}.ql{display:none}.onegrid .card,.card{grid-template-columns:minmax(0,1fr)}.onegrid .card>.ctl,.onegrid .card>div:nth-child(2){grid-column:1;grid-row:auto}.win-tiles,.win-tiles.four{grid-template-columns:repeat(3,minmax(0,1fr))}.steps,.gtm{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media (max-width:760px){
  html,body{overflow-x:clip;max-width:100%}html{background:var(--bg);-webkit-text-size-adjust:100%;text-size-adjust:100%}body{overscroll-behavior-y:none}
  select,input,textarea,.cbrow input,.toolbar input[type=search],.toolbar select{font-size:16px!important}
  .tabs,.plist,.scroll,.drawer,textarea{scrollbar-width:none}.tabs::-webkit-scrollbar,.plist::-webkit-scrollbar,.scroll::-webkit-scrollbar,.drawer::-webkit-scrollbar,textarea::-webkit-scrollbar{display:none}
  .scroll{overflow-x:visible}table{font-size:.84rem}th,td{padding-right:8px}.drawer{overscroll-behavior:contain}textarea{resize:none}
  .callbtn{display:flex;width:100%;min-height:52px;font-size:1.05rem;margin:10px 0 4px}
- :root{color-scheme:dark;--bg:#0e0f12;--tint:#16181d;--card:#16181d;--line:#262930;--line2:#33363e;--ink:#ececef;--ink2:#b9bcc4;--mute:#8a8f9c;--dim:#3d4150;--accent-soft:#1c2a44;--good:#7ed3a0;--good-soft:#163b27;--warn:#f0b35a;--bad:#f28b82;--info-ink:#8ab4f8;--win:#16181d;--win2:#20232b;--win2-hover:#272a33;--dark-line:#262930;--nav-bg:#0e0f12e6;--ink-hover:#d9dbe0}
+ :root{color-scheme:dark;--bg:#0e0f12;--tint:#16181d;--card:#16181d;--line:#262930;--line2:#33363e;--ink:#ececef;--ink2:#b9bcc4;--mute:#8a8f9c;--dim:#3d4150;--accent-soft:#1c2a44;--good:#7ed3a0;--good-soft:#163b27;--warn:#8ab4f8;--dot-act:#8ab4f8;--bad:#f28b82;--info-ink:#8ab4f8;--accent:#8ab4f8;--win:#16181d;--win2:#20232b;--win2-hover:#272a33;--dark-line:#262930;--nav-bg:#0e0f12e6;--ink-hover:#d9dbe0}
  .nav-in{flex-wrap:wrap;padding:10px 16px;gap:8px 12px}.tabs{order:3;flex-basis:100%;justify-content:space-between;gap:0}.tab{padding:6px 0;font-size:.86rem}.live .lt{display:none}
  main{padding:20px 16px 80px}.head{margin-bottom:22px}.card{grid-template-columns:minmax(0,1fr);padding:18px}
  .win{padding:14px;border-radius:16px}.win-tiles,.win-tiles.four{grid-template-columns:repeat(2,minmax(0,1fr))}.tv{font-size:1.3rem}.wrow{grid-template-columns:12px 1fr auto}.wrow span:nth-child(3){display:none}
  .win-tiles a,.tile{border-right:0;border-bottom:1px solid var(--line)}.tab{padding:0 8px 10px;font-size:.68rem;letter-spacing:.08em}.tabs{margin-left:0}.nav-in{padding-top:10px}.chips{grid-template-columns:repeat(2,minmax(0,1fr))}.chips .oc:nth-child(4n){border-right:1px solid var(--line2)}.chips .oc:nth-child(2n){border-right:0}.chips .oc:nth-last-child(-n+4){border-bottom:1px solid var(--line2)}.chips .oc:nth-last-child(-n+2){border-bottom:0}.onegrid .card>.ctl{grid-column:1;grid-row:auto}.steps li{border-right:0}
+ .win{border-radius:0}.tline{grid-template-columns:minmax(0,1fr);row-gap:18px}.tline:before{display:none}.tline li{padding:0 0 0 24px}.tline li:before{top:5px}
  .one .onebar{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--nav-h,92px));z-index:10;background:var(--bg);padding:8px 0;margin:-8px 0 0}.one #calls-list{display:none}
  .one .onebar .btn,.card .savebar .btn,.chips .oc,.card select,.cbrow input{min-height:44px}.card .savebar .btn,.dbar .btn.primary{flex:1}.card .big{font-size:1.6rem}.card .big a{display:inline-block;padding:4px 0}
  .queue{display:none}
@@ -226,6 +267,7 @@ select,textarea,input[type=search],input[type=date],input[type=email],input[type
  .prow.pgrid{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px}.prow .c-city,.prow .c-post{display:none}.prow .c-law,.prow .c-why{grid-column:1/-1}
  .ev{grid-template-columns:54px minmax(0,1fr)}.ev>.aud,.ev>.fitbar,.ev>.links,.ev>.evs{grid-column:2}
  .steps,.gtm{grid-template-columns:minmax(0,1fr)}
+ .brow{grid-template-columns:28px minmax(0,1fr)}.brow>div:nth-child(n+3){grid-column:2}.bhead{display:none}
  .touch{grid-template-columns:70px minmax(0,1fr)}.touch>span:last-child{grid-column:1/-1}.soon{grid-template-columns:minmax(0,1fr) auto}.soon .sf{grid-column:1/-1}
  .cal .d{min-height:52px;padding:4px}.cal .chip{font-size:0;width:10px;height:10px;border-radius:50%;padding:0;margin:5px 3px 0 0;display:inline-block;vertical-align:top}
  .frow,.frow.sub{grid-template-columns:minmax(0,1fr) 48px 48px}.frow .bar{display:none}
@@ -240,7 +282,7 @@ select,textarea,input[type=search],input[type=date],input[type=email],input[type
 @media (prefers-reduced-motion:reduce){#spl-field{display:none}.spl-mark{opacity:1;transform:none}}
 </style>
 <header class="nav"><div class="nav-in"><a class="wordmark" href="https://www.order.financial/" target="_blank" rel="noopener" title="order.financial · desk V1.1">Order<b>.</b></a>
-<nav class="tabs" role="tablist" aria-label="Views" hidden><button class="tab" role="tab" data-v="today" aria-selected="true">Today</button><button class="tab" role="tab" data-v="pipeline" aria-selected="false">Pipeline</button><button class="tab" role="tab" data-v="kpis" aria-selected="false">KPIs</button><button class="tab" role="tab" data-v="gtm" aria-selected="false">Game plan</button><button class="tab" role="tab" data-v="events" aria-selected="false">Events</button></nav>
+<nav class="tabs" role="tablist" aria-label="Views" hidden><button class="tab" role="tab" data-v="today" aria-selected="true">Today</button><button class="tab" role="tab" data-v="pipeline" aria-selected="false">Pipeline</button><button class="tab" role="tab" data-v="kpis" aria-selected="false">KPIs</button><button class="tab" role="tab" data-v="gtm" aria-selected="false">Game plan</button><button class="tab" role="tab" data-v="events" aria-selected="false">Events</button><button class="tab" role="tab" data-v="bespoke" aria-selected="false">Bespoke</button></nav>
 <div class="live" id="live" hidden><span class="dot"></span><span class="lt">Data as of the last build</span><button class="btn" id="refresh" type="button">Refresh</button></div><button class="btn" id="signout" type="button" hidden>Sign out</button></div></header>
 <div id="splash" aria-hidden="true"><canvas id="spl-field"></canvas><svg class="spl-mark" viewBox="0 0 64 64"><circle cx="30" cy="31" r="15" fill="none" stroke="#ffffff" stroke-width="7"/><circle cx="49" cy="47" r="5" fill="#4f86ff"/></svg></div>
 <main>
@@ -448,7 +490,7 @@ function renderToday(){
   $('#t-sum').innerHTML='<div class="win"><div class="win-tiles">'+
     [['#s-calls','Calls due',calls.length,calls.length?'east to west':'none due'],['#s-fu','Follow-up emails due',fus.length,fus.length?'drafts that morning':'none due'],['#s-new','New emails to send',drafts.length,drafts.length?'in Gmail Drafts':'nothing waiting'],['#s-log','Logged today',logged.length,logged.length?'saved':'nothing yet']].map(function(x){return '<a href="'+x[0]+'"><div class="tk">'+x[1]+'</div><div class="tv">'+x[2]+'</div><div class="ts">'+x[3]+'</div></a>'}).join('')+
     '<a href="#s-new"><div class="tk">Sent today</div><div class="tv">'+sentToday+' <span class="muted">of '+cap+'</span></div><div class="ts '+(sentToday>=cap?'good':'')+'">'+'today'+'</div></a></div>'+
-    (nextRows?'<div class="win-rows">'+nextRows+'</div>':'')+'</div>';
+    '</div>';
   var soonRows=soon.map(function(x){var t=x.t;return '<div class="soon"><span class="sd">'+fmtLong(x.s.due)+'</span><span><span class="dotc '+(x.s.kind==='call'?'warn':'info')+'"></span> '+stepName(x.s)+'</span><span class="sf">'+esc(t.to||'-')+' · '+esc(t.firm)+'</span><span class="muted">'+(x.s.kind==='call'?esc(t.phone||''):'drafts that morning')+'</span></div>'});
   
   var callsHtml,held=false;
@@ -459,8 +501,7 @@ function renderToday(){
     var c=calls[S.callIdx];held=!!S.pending[oid((byEmail[c.t.email]||byKey[c.t.key]||{key:c.t.key}).key,c.s.slot)];
     callsHtml='<div class="one"><div class="onebar"><span class="n">'+(S.callIdx+1)+' of '+calls.length+'</span><span class="zone">'+esc(c.zn)+'</span>'+(held?'<span class="pill warn"><i></i>Save or clear this card to move on</span>':'')+'<span class="sp"></span>'+
       '<button class="btn" type="button" id="calls-prev"'+(S.callIdx&&!held?'':' disabled')+'>Back</button><button class="btn" type="button" id="calls-next"'+(S.callIdx<calls.length-1&&!held?'':' disabled')+'>Next</button><button class="btn" type="button" id="calls-list">Show as a list</button></div>'+
-      '<div class="onegrid"><div class="queue ql">'+calls.map(function(x,i){return '<button type="button" data-i="'+i+'"'+(i===S.callIdx?' aria-current="true"':'')+' title="'+esc(x.zn)+'"><b>'+(i<9?'0':'')+(i+1)+'</b><span>'+esc(x.t.firm)+'</span><em>'+esc(stepName(x.s))+'</em></button>'}).join('')+'</div>'+
-      '<div class="cards">'+cardFor(c.t,'call',c.s)+'</div></div></div>';
+      '<div class="onegrid"><div class="cards">'+cardFor(c.t,'call',c.s)+'</div><div class="qlh">Up next</div><div class="queue ql">'+calls.map(function(x,i){return '<button type="button" data-i="'+i+'"'+(i===S.callIdx?' aria-current="true"':'')+' title="'+esc(x.zn)+'"><b>'+(i<9?'0':'')+(i+1)+'</b><span>'+esc(x.t.firm)+'</span><em>'+esc(stepName(x.s))+'</em></button>'}).join('')+'</div></div></div>';
   }
   $('#t-body').innerHTML='<h2 id="s-calls">Calls due <span class="n">'+calls.length+'</span></h2>'+callsHtml+
     sec('s-fu','Follow-up emails due',fus,'No follow-ups due. Run Email Drafts when one shows here.')+
@@ -595,6 +636,16 @@ function renderEvents(){
 }
 
 
+function renderBespoke(){
+  var el=$('#blist');if(!el)return;var B=D.bespoke||[],ok=B.filter(function(x){return x.state==='confirmed'}),held=B.filter(function(x){return x.state!=='confirmed'});
+  function link(u,t){u=String(u||'');return /^https?:\/\//i.test(u)?'<a href="'+esc(u)+'" target="_blank" rel="noopener">'+esc(t)+' ↗</a>':esc(t)}
+  var rows=ok.map(function(x,i){return '<div class="brow"><div class="bn"><b>'+(i<9?'0':'')+(i+1)+'</b></div><div><div class="who">'+esc(x.name)+'</div><div class="meta">'+esc([x.title,x.org].filter(Boolean).join(' · '))+(x.size?' · '+link(x.size_url,x.size+' attorneys named'):'')+'</div></div>'+
+    '<div><div class="pc" style="color:var(--ink)">'+esc(x.hook)+'</div><div class="meta">'+link(x.hook_url,fmtLong(x.hook_date))+' · '+esc(x.kind)+'</div></div><div class="pc">'+esc(x.topic)+'</div></div>'});
+  el.innerHTML='<h2 style="margin-top:0">Confirmed <span class="n">'+ok.length+'</span></h2><div class="bhead"><span></span><span>Person</span><span>The hook</span><span>Worth five minutes of theirs</span></div>'+(rows.length?rows.join(''):'<div class="empty">No one confirmed yet.</div>')+
+    '<h2>Held <span class="n">'+held.length+'</span></h2>'+(held.length?held.map(function(x){return '<div class="soon"><span class="sf">'+esc(x.name)+'</span><span class="muted">'+esc(x.org)+'</span><span class="muted" style="grid-column:span 2">'+esc(x.note)+'</span></div>'}).join(''):'<div class="empty">Nothing held.</div>');
+}
+
+
 function renderKpis(){
   var T=S.T,sent=0,today=0,rep=0,per={};
   Object.keys(T).forEach(function(a){var t=T[a];if(!t.sent.length)return;sent++;if(t.replied)rep++;t.sent.forEach(function(ts){var d=localDay(ts);per[d]=(per[d]||0)+1;if(d===TODAY)today++})});
@@ -673,7 +724,7 @@ function liveAction(){window.__orderRefresh()}
 function renderAll(){
   var a=document.activeElement;if(a&&(a.tagName==='TEXTAREA'||(a.tagName==='SELECT'&&a.id!=='pst')||(a.tagName==='INPUT'&&a.type==='date'))&&!a.closest('#drawer')){S.dirty=true;return}
   if(S.drawer&&!$('#drawer').hidden){S.dirty=true;S.T=threads();renderKpis();return}
-  S.dirty=false;S.T=threads();renderToday();renderPipeline();renderEvents();renderKpis();
+  S.dirty=false;S.T=threads();renderToday();renderPipeline();renderEvents();renderKpis();renderBespoke();
 }
 document.addEventListener('focusout',function(){if(S.dirty)setTimeout(function(){if(S.dirty)renderAll()},300)});
 $$('.tab').forEach(function(b){b.onclick=function(){show(b.dataset.v)}});
