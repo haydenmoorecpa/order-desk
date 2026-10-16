@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-TMIj7sAd1wVrLfXRFSzAPMA4P17weYpNv12RjYxop6o=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-AdYo25mOdBpLAVAHKMeFY2w/iFXaWK0gAdxRvolo1SQ=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c10'/%3E%3Ccircle cx='30' cy='31' r='15' fill='none' stroke='%23ffffff' stroke-width='7'/%3E%3Ccircle cx='49' cy='47' r='5' fill='%234f86ff'/%3E%3C/svg%3E"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" media="(max-width:760px)" content="#0e0f12"><meta name="theme-color" content="#ffffff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="Order"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
 /* ---------- the desk, 2026-10-15 (evening): one system, written once. Space and type do the work; a line only where a
@@ -107,7 +107,7 @@ details.mail pre{white-space:pre-wrap;font:inherit;font-size:.88rem;line-height:
 .onebar .n{font-weight:600;color:var(--ink)}.onebar .sp{flex:1}
 #calls-list,#calls-one{border:0;background:none;color:var(--mute);font-weight:500;padding:0 0 0 8px}#calls-list:hover,#calls-one:hover{color:var(--ink)}
 .onegrid .card{grid-template-columns:minmax(0,1fr) minmax(340px,460px);gap:20px 56px;padding:28px 32px}
-.onegrid .card>div:nth-child(2){grid-column:1}.onegrid .card>.ctl{grid-column:2;grid-row:1/span 2}
+.onegrid .card>div:nth-child(2),.onegrid .card>.nb{grid-column:1;grid-row:auto}.onegrid .card>.ctl{grid-column:2;grid-row:1/span 3}
 .qlh{font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:-.01em;margin:44px 0 10px}
 .ql{column-count:2;column-gap:48px}
 .ql button{break-inside:avoid;display:grid;grid-template-columns:30px minmax(0,1fr) auto;gap:10px;align-items:baseline;width:100%;text-align:left;border:0;background:none;border-radius:var(--r2);padding:7px 10px;font-size:.9rem;color:var(--ink2);cursor:pointer}
@@ -209,6 +209,15 @@ details.held>div{margin-top:12px}
 .tp .lab{font-size:.8rem;font-weight:600;color:var(--mute);margin:0 0 4px}.tp p{margin:0 0 16px;color:var(--ink)}.tp p:last-child{margin-bottom:0}
 .tp-con{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:14px}.tp .callbtn{margin-top:0;height:40px}
 .tp-ctl{display:grid;gap:10px}.tp-ctl select{width:100%}.tp-ctl textarea{min-height:64px}
+/* notes and the posting (10-16): evergreen facts, a dated history, the posting's own responsibilities */
+.nb{display:grid;gap:8px;align-content:start}.nb .lab,.ctl .lab{font-size:.8rem;font-weight:600;color:var(--mute);margin-top:4px}
+textarea.ever{min-height:70px;font-size:.9rem;background:var(--tint);border-color:transparent}textarea.ever:focus{background:var(--card)}
+.hist2{list-style:none;margin:0;padding:0;display:grid;gap:7px}.hist2 li{display:grid;grid-template-columns:52px minmax(0,1fr);gap:10px;font-size:.88rem;line-height:1.45}
+.hist2 time{color:var(--mute)}.hist2 b{font-weight:600}
+details.earlier summary{cursor:pointer;list-style:none;font-size:.82rem;font-weight:600;color:var(--accent);margin-bottom:7px}details.earlier summary::-webkit-details-marker{display:none}
+details.duties ul,.dlist{margin:10px 0 0;padding-left:18px;display:grid;gap:4px;font-size:.88rem;color:var(--ink2);max-width:62ch}details.duties a{display:inline-block;margin-top:8px}
+.dlist{margin-top:12px}
+.card>.nb{grid-column:1/3;grid-row:2}.card>.ctl{grid-column:3;grid-row:1/span 2}
 /* the call flow (10-16): instant taps, a press you can feel, no sticky hover on a phone, the next call sliding in */
 button,a,input,select,textarea,label,summary{touch-action:manipulation}
 .chips .oc:active,.btn:active,.kind button:active,.ql button:active{transform:scale(.97)}
@@ -230,7 +239,7 @@ button,a,input,select,textarea,label,summary{touch-action:manipulation}
 #si-back{border:0;background:none;padding:0;height:auto;color:var(--mute);font-weight:500}
 .toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 24px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:10px;font-weight:500;font-size:.88rem;z-index:60;box-shadow:0 12px 32px rgba(14,15,18,.22);max-width:calc(100vw - 32px)}
 @media (max-width:960px){
- .card,.onegrid .card{grid-template-columns:minmax(0,1fr)}.onegrid .card>.ctl,.onegrid .card>div:nth-child(2){grid-column:1;grid-row:auto}
+ .card,.onegrid .card{grid-template-columns:minmax(0,1fr)}.onegrid .card>.ctl,.onegrid .card>div:nth-child(2),.card>.nb,.card>.ctl{grid-column:1;grid-row:auto}
  .ql{column-count:1}.tline{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:28px}.tline:before{display:none}.plan{grid-template-columns:minmax(0,1fr)}
 }
 /* the phone: dark, the views in a tab bar at the thumb, the call first */
@@ -404,6 +413,27 @@ function active(t,p){var st=statusOf(p,S.T).name;return !(t.replied||t.bounced||
 function nextStep(t){var p=byEmail[t.email]||{key:t.key};if(!active(t,p))return null;return stepsOf(t).filter(function(x){return !x.done})[0]||null}
 function locOf(p){p=p||{};return p.address||[p.city,p.state].filter(Boolean).join(', ')}
 function mapsUrl(a){return 'https://maps.apple.com/?q='+encodeURIComponent(a)}
+
+var DATED=/^\s*(\d{1,2})\/(\d{1,2})(?:\/(\d{2,4}))?\s*(?:[-–—:.]\s*|\s+|$)/;
+function splitNotes(txt){var ever=[],log=[],cur=null,mo0=new Date().getMonth()+1,y0=new Date().getFullYear();
+  String(txt||'').replace(/\r/g,'').split('\n').forEach(function(ln){var m=DATED.exec(ln);
+    if(m&&+m[1]>=1&&+m[1]<=12&&+m[2]>=1&&+m[2]<=31){var mo=+m[1],y=m[3]?(m[3].length===2?2000+ +m[3]:+m[3]):(mo>mo0+1?y0-1:y0);
+      cur={d:y+'-'+pad(mo)+'-'+pad(+m[2]),n:ln.slice(m[0].length).trim()};log.push(cur);return}
+    if(!ln.trim()){cur=null;ever.push('');return}
+    if(cur)cur.n+=(cur.n?'\n':'')+ln.trim();else ever.push(ln)});
+  return {ever:ever.join('\n').replace(/\n{3,}/g,'\n\n').trim(),log:log.filter(function(e){return e.n})}}
+function noteModel(p){var d=doc(p.key)||{},raw=notesOf(p);if(Array.isArray(d.log))return {ever:raw,log:d.log.slice(),split:false};
+  var x=splitNotes(raw);return {ever:x.ever,log:x.log,split:x.log.length>0}}
+function history(p,t,m){m=m||noteModel(p);var out=m.log.map(function(e){return {d:e.d,o:e.o||'',n:e.n||''}});
+  Object.keys(S.docs.outcomes).forEach(function(id){var x=S.docs.outcomes[id];if(!x||x.key!==p.key||!x.outcome||/^(email-|draft)/.test(String(x.slot)))return;
+    var dd=localDay(x.edited||x.at);if(out.some(function(e){return e.d===dd&&e.o===x.outcome}))return;out.push({d:dd,o:(x.slot==='reply'?'reply: ':'')+x.outcome,n:''})});
+  if(t)(t.sent||[]).forEach(function(ts,i){out.push({d:localDay(ts),o:'Email '+(i+1)+' sent',n:'',em:1})});
+  return out.filter(function(e){return e.d}).sort(function(a,b){return a.d<b.d?-1:(a.d>b.d?1:(a.em?-1:1))})}
+function histHtml(h){if(!h.length)return '<div class="muted small">Nothing on record yet.</div>';
+  var li=function(e){return '<li><time>'+fmt(e.d)+'</time><span>'+(e.o?'<b>'+esc(e.o)+'</b>':'')+(e.o&&e.n?' · ':'')+esc(e.n).replace(/\n/g,'<br>')+'</span></li>'};
+  var old=h.slice(0,Math.max(0,h.length-4)),rec=h.slice(-4);
+  return (old.length?'<details class="earlier"><summary>Earlier · '+old.length+'</summary><ol class="hist2">'+old.map(li).join('')+'</ol></details>':'')+'<ol class="hist2">'+rec.map(li).join('')+'</ol>'}
+function dutiesHtml(p){var d=(p&&p.duties)||[];return d.length?'<details class="mail duties"><summary>Responsibilities in the posting</summary><ul>'+d.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'+(p.post_url?'<a class="small" href="'+esc(p.post_url)+'" target="_blank" rel="noopener">Open the posting ↗</a>':'')+'</details>':''}
 function stepName(s){return s.slot==='cb'?'Call back':(s.kind==='call'?'Call ':'Email ')+s.n}
 function statusOf(p,T){
   var d=doc(p.key); if(d&&d.status) return {name:d.status,auto:false};
@@ -442,8 +472,12 @@ function cardFor(t,kind,extra,logged){
   if(kind==='draft') mid='<div class="meta">'+esc(t.email)+'</div><span class="pill good"><i></i>In Gmail Drafts</span>';
   var mail=t.body?'<details class="mail"><summary>'+(t.sent.length?'Latest email'+(t.last_sent?', sent '+fmt(t.last_sent):''):'The draft')+'</summary><pre>'+esc(t.subject)+'\n\n'+esc(t.body)+'</pre></details>':'';
   var loc=locOf(p);
-  return '<div class="card"><div><div class="who">'+(t.to&&t.to!=='-'?esc(t.to)+'<span class="firm">'+esc(t.firm)+'</span>':esc(t.firm))+'</div>'+(loc?'<a class="loc" href="'+esc(mapsUrl(loc))+'" target="_blank" rel="noopener">'+esc(loc)+'</a>':'')+'<div class="st">'+pill(st)+'</div><div class="meta">'+meta+'</div>'+(t.auto?'<div class="meta" style="margin-top:4px">'+esc(t.auto.slice(0,200))+'</div>':'')+next+mail+'</div>'+
-    '<div>'+mid+'</div>'+controls(k,slot,kind,t,p,logged)+'</div>';
+  return '<div class="card"><div><div class="who">'+(t.to&&t.to!=='-'?esc(t.to)+'<span class="firm">'+esc(t.firm)+'</span>':esc(t.firm))+'</div>'+(loc?'<a class="loc" href="'+esc(mapsUrl(loc))+'" target="_blank" rel="noopener">'+esc(loc)+'</a>':'')+'<div class="st">'+pill(st)+'</div><div class="meta">'+meta+'</div>'+(t.auto?'<div class="meta" style="margin-top:4px">'+esc(t.auto.slice(0,200))+'</div>':'')+next+dutiesHtml(p)+mail+'</div>'+
+    '<div>'+mid+'</div>'+(logged?'':notesPane(p,t,oid(k,slot)))+controls(k,slot,kind,t,p,logged)+'</div>';
+}
+function notesPane(p,t,pk){var m=noteModel(p),pend=S.pending[pk],ev=pend&&pend.notes!=null?pend.notes:m.ever;
+  return '<div class="nb"><div class="lab">Evergreen</div><textarea class="ever" data-ever="'+esc(pk)+'" rows="3" placeholder="Standing facts: who decides, the gatekeeper, addresses">'+esc(ev)+'</textarea>'+
+    '<div class="lab">History</div>'+histHtml(history(p,t,m))+'</div>';
 }
 
 function controls(k,slot,kind,t,p,logged){
@@ -453,7 +487,7 @@ function controls(k,slot,kind,t,p,logged){
   var opts=D.outcomes[kind].map(function(o){return '<option value="'+esc(o)+'"'+(ov===o?' selected':'')+'>'+esc(o)+'</option>'}).join('');
   var chips=kind==='call'?'<div class="chips">'+D.outcomes.call.map(function(o){return '<button type="button" class="oc'+(ov===o?' on':'')+'" data-o="'+esc(o)+'">'+esc(o)+'</button>'}).join('')+'</div>':'';
   return '<div class="ctl" data-card="'+esc(pk)+'">'+chips+'<select data-key="'+esc(k)+'" data-slot="'+esc(slot)+'" data-email="'+esc(t.email)+'"'+(slot==='cb'?' data-o0="'+esc(o0)+'"':'')+' id="oc-'+esc(pk)+'" aria-label="Outcome"><option value="">Outcome…</option>'+opts+'</select>'+
-    '<textarea data-notes="'+esc(k)+'" id="tn-'+esc(pk)+'" placeholder="Notes for '+esc(t.firm)+'">'+esc(nv)+'</textarea>'+
+    '<textarea data-entry="'+esc(k)+'" id="tn-'+esc(pk)+'" rows="2" placeholder="What happened on this call">'+esc(pend&&pend.entry||'')+'</textarea>'+
     (cbk?'<div class="cbrow"><label for="cb-'+esc(pk)+'">Call back on</label><input type="date" data-cb="'+esc(k)+'" data-cb0="'+esc(cb0)+'" id="cb-'+esc(pk)+'" value="'+esc(cv)+'"><button class="btn cbclear" type="button">Clear</button></div>'+
       '<div class="cbrow cbmeta"><div class="kind" role="group" aria-label="Call-back kind" data-k0="'+esc(ck0)+'"><button type="button" data-kind=""'+(ckv?'':' class="on"')+'>Once</button><button type="button" data-kind="evergreen"'+(ckv==='evergreen'?' class="on"':'')+'>Evergreen</button></div>'+
       '<input type="tel" data-cbphone data-p0="'+esc(cp0)+'" value="'+esc(cpv)+'" placeholder="Call-back number (optional)" aria-label="Call-back number"></div>':'')+
@@ -547,7 +581,8 @@ function renderPipeline(){
   $$('.seg button[data-seg]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.seg===S.seg);b.querySelector('span').textContent=segN[b.dataset.seg]});
   list.forEach(function(x){
     var p=x.p;if(S.seg!=='all'&&['yours','fits','held'][x.tier]!==S.seg)return;if(sf&&x.st.name!==sf)return;
-    var n=notesOf(p);if(q&&(p.firm+' '+p.partner+' '+p.city+' '+p.law+' '+p.seat+' '+n).toLowerCase().indexOf(q)<0)return;
+    var nm=noteModel(p),hl=history(p,null,nm),last=hl[hl.length-1],n=last?fmt(last.d)+' \u00b7 '+[last.o,last.n].filter(Boolean).join(' \u00b7 '):nm.ever;
+    if(q&&(p.firm+' '+p.partner+' '+p.city+' '+p.law+' '+p.seat+' '+notesOf(p)+' '+nm.log.map(function(e){return e.n}).join(' ')).toLowerCase().indexOf(q)<0)return;
     var fitTone=p.fit==='fits'?'good':(p.fit.indexOf('fits')===0?'warn':'');
     rows.push('<div class="prow pgrid" tabindex="0" role="button" data-key="'+esc(p.key)+'" aria-label="Open '+esc(p.firm)+'">'+
       '<div><div class="pf">'+esc(p.firm)+'</div><div class="ps">'+esc([p.partner,nf[p.firm]>1?p.email:'',p.phone].filter(Boolean).join(' · '))+'</div></div>'+
@@ -579,10 +614,11 @@ function openDrawer(key){
   var hist=(h.length?h.map(function(x){return '<div><time>'+(x[0]?fmt(x[0]):'')+'</time><span>'+esc(x[1])+'</span></div>'}).join(''):(t?'':'<div class="muted">Not contacted from this mailbox yet.</div>'));
   $('#drawer').innerHTML='<div class="dh"><div><div class="eyebrow">'+esc([p.city,p.state].filter(Boolean).join(', ')||'Firm')+'</div><h3 id="dtitle">'+esc(p.firm)+'</h3><div class="muted small" style="margin-top:4px">'+esc(p.law||D.ui.n.l_practice)+'</div></div><button class="btn" id="dclose" aria-label="Close">Close</button></div>'+
     (p.phone?'<a class="btn primary callbtn" style="margin-top:16px" href="tel:'+esc(String(p.phone).replace(/[^0-9+]/g,''))+'"><span>Call '+esc(p.partner||p.phone)+'</span></a>':'')+'<div class="dsec"><div class="lab">Status and notes</div><div style="display:grid;gap:12px">'+statusSelect('dstatus',st.auto?'':st.name)+'<div class="muted small" id="dmeaning">'+esc(STATUS[st.name]?STATUS[st.name].meaning:(st.auto?'Set by the page until you pick one.':''))+'</div>'+
-      '<textarea id="dnotes" placeholder="Notes">'+esc(notesOf(p))+'</textarea>'+
+      '<textarea id="dnotes" class="ever" rows="3" placeholder="Evergreen: standing facts">'+esc(noteModel(p).ever)+'</textarea><textarea id="dentry" rows="2" placeholder="Add a dated note"></textarea>'+
       '<div class="cbrow"><label for="dcb">Call back on</label><input type="date" id="dcb" value="'+esc(cb0)+'"><button class="btn" type="button" id="dcbclear">Clear</button></div>'+
       '<div class="cbrow cbmeta"><div class="kind" id="dkind" role="group" aria-label="Call-back kind"><button type="button" data-kind=""'+(ck0?'':' class="on"')+'>Once</button><button type="button" data-kind="evergreen"'+(ck0==='evergreen'?' class="on"':'')+'>Evergreen</button></div>'+
       '<input type="tel" id="dcbp" value="'+esc(cp0)+'" placeholder="Call-back number (optional)" aria-label="Call-back number"></div></div></div>'+
+    '<div class="dsec"><div class="lab">History</div>'+histHtml(history(p,t||null,noteModel(p)))+'</div>'+
     '<div class="dsec"><div class="lab">Contact</div><div class="kv">'+(p.partner?'<span>Partner</span><span>'+esc(p.partner)+'</span>':'')+
       (p.phone?'<span>Phone</span><span><a class="sel" href="tel:'+esc(String(p.phone).replace(/[^0-9+]/g,''))+'">'+esc(p.phone)+'</a><button class="copy" data-copy="'+esc(p.phone)+'">Copy</button></span>':'')+
       (p.email?'<span>Email</span><span><span class="sel">'+esc(p.email)+'</span><button class="copy" data-copy="'+esc(p.email)+'">Copy</button></span>':'<span>Email</span><span class="muted">None published</span>')+
@@ -590,7 +626,7 @@ function openDrawer(key){
       (p.website?'<span>Website</span><span><a href="'+esc(p.website)+'" target="_blank" rel="noopener">'+esc(p.website.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))+' ↗</a></span>':'')+'</div></div>'+
     '<div class="dsec"><div class="lab">Why it is here</div><div class="kv"><span>Seat</span><span>'+esc(p.seat||'-')+'</span><span>Posted</span><span>'+esc(p.posted?fmtLong(p.posted):'-')+'</span>'+
       '<span>'+esc(D.ui.n.l_attorneys)+'</span><span>'+esc(p.size||'not read')+'</span><span>Gates</span><span>'+esc(p.fit)+(p.hold&&p.fit.indexOf('fits')!==0?' · '+esc(p.hold):'')+'</span>'+
-      (p.post_url?'<span>Posting</span><span><a href="'+esc(p.post_url)+'" target="_blank" rel="noopener">Open the posting ↗</a></span>':'')+'</div></div>'+
+      (p.post_url?'<span>Posting</span><span><a href="'+esc(p.post_url)+'" target="_blank" rel="noopener">Open the posting ↗</a></span>':'')+'</div>'+((p.duties||[]).length?'<ul class="dlist">'+p.duties.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>':'')+'</div>'+
     touches+(hist?'<div class="dsec"><div class="lab">'+(t?'Also on record':'What we have done')+'</div><div class="hist">'+hist+'</div></div>':'')+
     '<div class="dbar"><button class="btn primary" id="dsave" type="button" disabled>Save changes</button><span class="saved" id="dsaved"></span></div>';
   $('#scrim').hidden=false;$('#drawer').hidden=false;$('#dclose').focus();S.drawerDirty=false;
@@ -598,16 +634,16 @@ function openDrawer(key){
   var btn=$('#dsave'),sv=$('#dsaved'),statusTouched=false;
   var mark=function(){S.drawerDirty=true;btn.disabled=false;sv.textContent='Unsaved changes';sv.style.color='var(--warn)'};
   $('#dstatus').onchange=function(){$('#dmeaning').textContent=STATUS[this.value]?STATUS[this.value].meaning:'';statusTouched=true;mark()};
-  $('#dnotes').oninput=mark;
+  $('#dnotes').oninput=mark;$('#dentry').oninput=mark;
   $('#dcb').onchange=mark;$('#dcb').oninput=mark;$('#dcbp').oninput=mark;$$('#dkind button').forEach(function(x){x.onclick=function(){$$('#dkind button').forEach(function(y){y.classList.toggle('on',y===x)});mark()}});$('#dcbclear').onclick=function(){$('#dcb').value='';mark()};
   $$('#drawer select[data-slot]').forEach(function(s){s.onchange=mark});
   btn.onclick=function(){
     var cbv=$('#dcb').value;if($('#dcb').validity&&$('#dcb').validity.badInput){sv.textContent='Finish the call-back date, or Clear it.';sv.style.color='var(--bad)';return}
     btn.disabled=true;sv.textContent='Saving…';sv.style.color='var(--mute)';
-    var chain=Promise.resolve(),nv=$('#dnotes').value,stv=$('#dstatus').value;
+    var chain=Promise.resolve(),nv=$('#dnotes').value,dn=$('#dentry').value.trim(),dm=noteModel(p),stv=$('#dstatus').value;
     
     $$('#drawer select[data-slot]').forEach(function(s){var slot=s.dataset.slot;if(s.value!==outcome(p.key,slot))chain=chain.then(function(){return writeOutcome(p,p.key,slot,p.email,s.value)})});
-    chain.then(function(){var patch={};if(nv!==notesOf(p))patch.notes=nv;if(statusTouched)patch.status=stv;if(cbv!==cb0)patch.callback=cbv;var dk=(($('#dkind button.on')||{}).dataset||{}).kind||'',dp=$('#dcbp').value.trim();if(dk!==ck0)patch.cbkind=dk;if(dp!==cp0)patch.cbphone=dp;if(Object.keys(patch).length)return savePipe(p,patch)})
+    chain.then(function(){var patch={};if(nv!==dm.ever||dm.split)patch.notes=nv;if(dn){var lg=dm.log.slice();lg.push({d:TODAY,o:'',n:dn,s:'note',at:new Date().toISOString()});patch.log=lg}else if(dm.split)patch.log=dm.log;if(statusTouched)patch.status=stv;if(cbv!==cb0)patch.callback=cbv;var dk=(($('#dkind button.on')||{}).dataset||{}).kind||'',dp=$('#dcbp').value.trim();if(dk!==ck0)patch.cbkind=dk;if(dp!==cp0)patch.cbphone=dp;if(Object.keys(patch).length)return savePipe(p,patch)})
       .then(function(){S.drawerDirty=false;S.dirty=true;toast('Saved: '+p.firm);openDrawer(p.key);$('#dsaved').textContent='Saved';$('#dsaved').style.color='var(--good)'})
       .catch(function(e){btn.disabled=false;sv.textContent='Not saved ('+((e&&e.code)||'error')+'). Press Save again.';sv.style.color='var(--bad)'});
   };
@@ -713,6 +749,7 @@ function savePipe(p,patch){
   var next={key:p.key,firm:p.firm,email:p.email,status:patch.status!=null?patch.status:(c0.status!=null?c0.status:(st.auto?'':st.name)),notes:patch.notes!=null?patch.notes:notesOf(p),
     callback:patch.callback!=null?patch.callback:cb.date,callback_at:patch.callback!=null?now:cb.at,at:now};
   var ck=patch.cbkind!=null?patch.cbkind:cb.kind,cp=patch.cbphone!=null?patch.cbphone:cb.phone;if(ck)next.callback_kind=ck;if(cp)next.callback_phone=cp;
+  var lg=patch.log!=null?patch.log:c0.log;if(Array.isArray(lg)&&lg.length)next.log=lg;
   return S.db.doc('pipeline/'+p.key).set(next).then(function(){S.docs.pipeline[p.key]=next});
 }
 
@@ -723,29 +760,33 @@ function writeOutcome(p,k,slot,email,o){
 }
 function bindCards(root){
   $$('.ctl[data-card]',root).forEach(function(box){
-    var s=box.querySelector('select[data-slot]'),t=box.querySelector('textarea[data-notes]'),c=box.querySelector('input[data-cb]'),cx=box.querySelector('button.cbclear'),b=box.querySelector('button.save'),sv=box.querySelector('.saved'),pk=box.dataset.card;
+    var s=box.querySelector('select[data-slot]'),t=box.querySelector('textarea[data-entry]'),c=box.querySelector('input[data-cb]'),cx=box.querySelector('button.cbclear'),b=box.querySelector('button.save'),sv=box.querySelector('.saved'),pk=box.dataset.card;
+    var card=box.closest('.card'),ev=card&&card.querySelector('textarea[data-ever]');
     var kd=box.querySelector('.kind'),ph=box.querySelector('input[data-cbphone]'),kindOf=function(){var o=kd&&kd.querySelector('button.on');return o?o.dataset.kind:''};
-    [s,t,c,cx,ph].concat($$('.chips .oc, .kind button',box)).forEach(function(x){if(x)x.disabled=!S.db});if(!S.db){b.disabled=true;return}
+    [s,t,c,cx,ph,ev].concat($$('.chips .oc, .kind button',box)).forEach(function(x){if(x)x.disabled=!S.db});if(!S.db){b.disabled=true;return}
     
     var mark=function(){var bad=c&&c.validity&&c.validity.badInput,prev=S.pending[pk];   
-      S.pending[pk]={outcome:s.value,notes:t?t.value:null,callback:bad?(prev?prev.callback:null):(c&&c.value!==c.dataset.cb0?c.value:null),
+      S.pending[pk]={outcome:s.value,entry:t?t.value:'',notes:ev?ev.value:null,callback:bad?(prev?prev.callback:null):(c&&c.value!==c.dataset.cb0?c.value:null),
         cbkind:kd&&kindOf()!==kd.dataset.k0?kindOf():null,cbphone:ph&&ph.value.trim()!==ph.dataset.p0?ph.value.trim():null};b.disabled=false;sv.textContent='Unsaved changes';sv.style.color='var(--warn)'};
     s.onchange=function(){$$('.chips .oc',box).forEach(function(x){x.classList.toggle('on',x.dataset.o===s.value)});mark()};if(t)t.oninput=mark;
     $$('.chips .oc',box).forEach(function(ch){ch.onclick=function(){var off=ch.classList.contains('on');s.value=off?'':ch.dataset.o;$$('.chips .oc',box).forEach(function(x){x.classList.toggle('on',!off&&x===ch)});mark()}});
-    if(kd)$$('button',kd).forEach(function(x){x.onclick=function(){$$('button',kd).forEach(function(y){y.classList.toggle('on',y===x)});mark()}});if(ph)ph.oninput=mark;if(c){c.onchange=mark;c.oninput=mark}if(cx)cx.onclick=function(){c.value='';mark()};b.onclick=function(){commit(box)};
+    if(kd)$$('button',kd).forEach(function(x){x.onclick=function(){$$('button',kd).forEach(function(y){y.classList.toggle('on',y===x)});mark()}});if(ph)ph.oninput=mark;if(ev)ev.oninput=mark;if(c){c.onchange=mark;c.oninput=mark}if(cx)cx.onclick=function(){c.value='';mark()};b.onclick=function(){commit(box)};
   });
 }
 function commit(box){
-  var s=box.querySelector('select[data-slot]'),t=box.querySelector('textarea[data-notes]'),c=box.querySelector('input[data-cb]'),b=box.querySelector('button.save'),sv=box.querySelector('.saved');
-  var k=s.dataset.key,slot=s.dataset.slot,p=byKey[k]||{key:k,firm:'',email:s.dataset.email},o=s.value,n=t?t.value:null,pk=box.dataset.card,said=[],patch={};
+  var s=box.querySelector('select[data-slot]'),t=box.querySelector('textarea[data-entry]'),c=box.querySelector('input[data-cb]'),b=box.querySelector('button.save'),sv=box.querySelector('.saved');
+  var card=box.closest('.card'),ev=card&&card.querySelector('textarea[data-ever]');
+  var k=s.dataset.key,slot=s.dataset.slot,p=byKey[k]||{key:k,firm:'',email:s.dataset.email},o=s.value,en=t?t.value.trim():'',pk=box.dataset.card,said=[],patch={},m=noteModel(p);
   if(c&&c.validity&&c.validity.badInput){sv.textContent='Finish the call-back date, or Clear it.';sv.style.color='var(--bad)';return}
   var a=document.activeElement;if(a&&a.blur&&box.contains(a))a.blur();   
-  var ctl=$$('button,select,textarea,input',box);ctl.forEach(function(x){x.disabled=true});sv.textContent='Saving…';sv.style.color='var(--mute)';
+  var ctl=$$('button,select,textarea,input',box).concat(ev?[ev]:[]);ctl.forEach(function(x){x.disabled=true});sv.textContent='Saving…';sv.style.color='var(--mute)';
   var kd=box.querySelector('.kind'),ph=box.querySelector('input[data-cbphone]'),kv=kd?((kd.querySelector('button.on')||{}).dataset||{}).kind||'':'';
   var chain=Promise.resolve(),o0=slot==='cb'?(s.dataset.o0||''):outcome(k,slot);
   if(kd&&kv!==kd.dataset.k0)patch.cbkind=kv;
   if(ph&&ph.value.trim()!==ph.dataset.p0)patch.cbphone=ph.value.trim();
-  if(n!==null&&n!==notesOf(p))patch.notes=n;
+  var o0x=slot==='cb'?(s.dataset.o0||''):outcome(k,slot),oc=o!==o0x&&o?o:'';
+  if(oc||en){var lg=m.log.slice();lg.push({d:TODAY,o:oc,n:en,s:slot,at:new Date().toISOString()});patch.log=lg}else if(m.split)patch.log=m.log;   
+  if(ev&&(ev.value!==m.ever||m.split))patch.notes=ev.value;else if(m.split)patch.notes=m.ever;   
   if(c&&c.value!==c.dataset.cb0){patch.callback=c.value;said.push(c.value?'back '+fmtLong(c.value):'call-back cleared')}
   
   if(o!==o0){chain=chain.then(function(){return writeOutcome(p,k,slot,s.dataset.email,o)});said.unshift(o||'outcome cleared')}
