@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-AdYo25mOdBpLAVAHKMeFY2w/iFXaWK0gAdxRvolo1SQ=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-M/FOjeZm6KJnyg9TSOVPlihDqlNnSvo78qITgr85W34=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c10'/%3E%3Ccircle cx='30' cy='31' r='15' fill='none' stroke='%23ffffff' stroke-width='7'/%3E%3Ccircle cx='49' cy='47' r='5' fill='%234f86ff'/%3E%3C/svg%3E"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" media="(max-width:760px)" content="#0e0f12"><meta name="theme-color" content="#ffffff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="Order"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
 /* ---------- the desk, 2026-10-15 (evening): one system, written once. Space and type do the work; a line only where a
@@ -96,7 +96,7 @@ input::placeholder,textarea::placeholder{color:var(--mute);opacity:.8}
 details.mail{margin-top:14px}
 details.mail summary{cursor:pointer;color:var(--accent);font-size:.875rem;font-weight:600;list-style:none;display:inline-block}details.mail summary::-webkit-details-marker{display:none}
 details.mail pre{white-space:pre-wrap;font:inherit;font-size:.88rem;line-height:1.6;color:var(--ink2);background:var(--tint);border-radius:10px;padding:16px 18px;margin:10px 0 0;max-width:62ch}
-.chips{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:1fr;gap:6px}
+.chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:1fr;gap:6px}
 .chips .oc{min-height:42px;border:1px solid var(--line2);border-radius:var(--r2);background:var(--card);color:var(--ink2);padding:4px 6px;font-size:.82rem;font-weight:500;line-height:1.2;cursor:pointer;transition:background .15s ease,border-color .15s ease,color .15s ease}
 .chips .oc:hover{border-color:var(--ink2);color:var(--ink)}.chips .oc.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}.chips .oc:disabled{opacity:.4;cursor:default}
 .chips+select{display:none}
@@ -218,6 +218,9 @@ details.earlier summary{cursor:pointer;list-style:none;font-size:.82rem;font-wei
 details.duties ul,.dlist{margin:10px 0 0;padding-left:18px;display:grid;gap:4px;font-size:.88rem;color:var(--ink2);max-width:62ch}details.duties a{display:inline-block;margin-top:8px}
 .dlist{margin-top:12px}
 .card>.nb{grid-column:1/3;grid-row:2}.card>.ctl{grid-column:3;grid-row:1/span 2}
+.hotlist{display:grid;gap:8px;margin-bottom:8px}.hot{display:flex;align-items:center;gap:16px;border:1px solid var(--accent);border-radius:var(--r);padding:14px 18px;background:var(--accent-soft)}
+.hot .hf{flex:1;min-width:0;text-align:left;border:0;background:none;padding:0;cursor:pointer;display:grid;gap:2px}.hot .hf b{font-family:var(--display);font-weight:600;font-size:1.05rem}.hot .hf span{color:var(--ink2);font-size:.88rem}
+#s-hot{margin-top:40px}
 /* the call flow (10-16): instant taps, a press you can feel, no sticky hover on a phone, the next call sliding in */
 button,a,input,select,textarea,label,summary{touch-action:manipulation}
 .chips .oc:active,.btn:active,.kind button:active,.ql button:active{transform:scale(.97)}
@@ -443,7 +446,8 @@ function statusOf(p,T){
   return {name:D.ui.n.s_new,auto:true};
 }
 function notesOf(p){var d=doc(p.key);return d&&d.notes!=null?d.notes:(p.hnotes||'')}
-function tone(name){if(DERIVED[name])return DERIVED[name];var s=STATUS[name];if(!s)return 'mute';if(name===D.ui.n.s_hot)return 'warn';return s.tone}
+var HOT=D.ui.n.s_hot;   
+function tone(name){if(DERIVED[name])return DERIVED[name];var s=STATUS[name];if(!s)return 'mute';if(name===HOT)return 'warn';return s.tone}
 function pill(st){return '<span class="pill '+(st.auto?'auto':tone(st.name))+'"><i></i>'+esc(st.name)+'</span>'}
 function statusSelect(id,cur){
   var g={},h='<select id="'+id+'" aria-label="Status"><option value="">Pick a status…</option>';
@@ -553,7 +557,10 @@ function renderToday(){
       '<button class="btn" type="button" id="calls-prev"'+(S.callIdx?'':' disabled')+'>Back</button><button class="btn" type="button" id="calls-next"'+(S.callIdx<calls.length-1?'':' disabled')+'>Next</button><button class="btn" type="button" id="calls-list">Show as a list</button></div>'+
       '<div class="onegrid"><div class="cards">'+cardFor(c.t,'call',c.s)+'</div><div class="qlh">Up next</div><div class="queue ql">'+calls.map(function(x,i){if(!S.qAll&&i>=QN&&i!==S.callIdx)return '';var hd=(i===0||calls[i-1].g!==x.g)?'<div class="qg">'+esc(GRP[x.g])+' <span>'+calls.filter(function(y){return y.g===x.g}).length+'</span></div>':'';return hd+'<button type="button" data-i="'+i+'"'+(i===S.callIdx?' aria-current="true"':'')+(S.pending[x.pk]?' class="pend"':'')+' title="'+esc(x.zn)+'"><b>'+(i<9?'0':'')+(i+1)+'</b><span>'+esc(x.t.firm)+'</span><em>'+esc(stepName(x.s))+'</em></button>'}).join('')+'</div>'+(calls.length>QN?'<button type="button" class="qmore" id="q-more">'+(S.qAll?'Show fewer':'Show all '+calls.length)+'</button>':'')+'</div></div>';
   }
-  $('#t-body').innerHTML=(calls.length&&!S.callsList?'<div id="s-calls" class="gap"></div>':'<h2 id="s-calls">Calls due <span class="n">'+calls.length+'</span></h2>')+callsHtml+
+  var hot=D.pipeline.filter(function(p){return statusOf(p,T).name===HOT});
+  var hotHtml=hot.length?'<h2 id="s-hot">'+esc(HOT)+' <span class="n">'+hot.length+'</span></h2><div class="hotlist">'+hot.map(function(p){var cb=cbOf(p),tl=String(p.phone||'').replace(/[^0-9+]/g,'');
+    return '<div class="hot"><button type="button" class="hf" data-key="'+esc(p.key)+'"><b>'+esc(p.firm)+'</b><span>'+esc([p.partner,cb?'call back '+fmtLong(cb.date):''].filter(Boolean).join(' \u00b7 '))+'</span></button>'+(tl?'<a class="btn" href="tel:'+esc(tl)+'">'+esc(p.phone)+'</a>':'')+'</div>'}).join('')+'</div>':'';
+  $('#t-body').innerHTML=hotHtml+(calls.length&&!S.callsList?'<div id="s-calls" class="gap"></div>':'<h2 id="s-calls">Calls due <span class="n">'+calls.length+'</span></h2>')+callsHtml+
     sec('s-fu','Follow-up emails due',fus,'No follow-up emails due.')+
     sec('s-new','New emails to send today',drafts,'Nothing waiting in Gmail Drafts.')+
     sec('s-log','Logged today',logged.map(function(x){return x.html}),'Nothing logged yet today.')+
@@ -566,6 +573,7 @@ function renderToday(){
   if(ls)ls.onclick=function(){S.callsList=true;renderToday()};if(on)on.onclick=function(){S.callsList=false;renderToday()};
   $$('.queue button').forEach(function(b){b.onclick=function(){var y=window.scrollY,ql=$('.ql'),qs=ql?ql.scrollTop:0;S.callIdx=+b.dataset.i;renderToday();window.scrollTo(0,y);var q2=$('.ql');if(q2)q2.scrollTop=qs}});
   $$('#t-sum .wrow').forEach(function(b){b.onclick=function(){S.callsList=false;S.callIdx=+b.dataset.go;renderToday();window.scrollTo(0,$('#s-calls').offsetTop-navH()-8)}});
+  $$('#t-body .hot .hf').forEach(function(b){b.onclick=function(){openDrawer(b.dataset.key)}});
   bindCards($('#t-body'));
 }
 
