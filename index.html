@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-M/FOjeZm6KJnyg9TSOVPlihDqlNnSvo78qITgr85W34=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-FRk5YBKwzyk4TO7fdRLy8/cszBlKxDHVUxdLHdr1D04=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c10'/%3E%3Ccircle cx='30' cy='31' r='15' fill='none' stroke='%23ffffff' stroke-width='7'/%3E%3Ccircle cx='49' cy='47' r='5' fill='%234f86ff'/%3E%3C/svg%3E"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" media="(max-width:760px)" content="#0e0f12"><meta name="theme-color" content="#ffffff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="Order"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
 /* ---------- the desk, 2026-10-15 (evening): one system, written once. Space and type do the work; a line only where a
@@ -465,8 +465,8 @@ function cardFor(t,kind,extra,logged){
   var next=nx&&!(kind==='call'&&nx.slot===extra.slot)?'<div class="meta" style="margin-top:4px">Next: <b style="color:var(--ink)">'+stepName(nx)+'</b> · '+fmtLong(nx.due)+(nx.kind==='call'&&t.phone?' · '+esc(t.phone):'')+'</div>':'';
   var mid='',cbx=kind==='call'&&(slot==='cb'||extra.cb)?cbOf(p):null;
   if(cbx&&cbx.phone&&String(cbx.phone).replace(/\D/g,'')!==String(t.phone||'').replace(/\D/g,''))t=Object.assign({},t,{phone:cbx.phone,office:t.phone});
-  if(kind==='call') mid=(t.phone?'<div class="big"><a href="tel:'+esc(String(t.phone).replace(/[^0-9+]/g,''))+'">'+esc(t.phone)+'</a></div>':'<div class="big">no phone on file</div>')+'<div class="meta">'+(slot==='cb'?'Call back'+(extra.cb?' set for '+fmtLong(extra.cb):''):'Call '+extra.n+' · day '+(extra.day+1)+' · due '+fmt(extra.due))+(extra.due<TODAY&&!logged?' <span class="pill warn"><i></i>overdue</span>':'')+'</div>'+
-    (extra.cb&&slot!=='cb'?'<div class="meta">Call back set for '+fmtLong(extra.cb)+(extra.cb<TODAY&&!logged?' <span class="pill warn"><i></i>overdue</span>':'')+'</div>':'')+
+  if(kind==='call') mid=(t.phone?'<div class="big"><a href="tel:'+esc(String(t.phone).replace(/[^0-9+]/g,''))+'">'+esc(t.phone)+'</a></div>':'<div class="big">no phone on file</div>')+'<div class="meta">'+(slot==='cb'?((cbOf(p)||{}).kind==='scheduled'?'Scheduled':'Call back')+(extra.cb?' for '+fmtLong(extra.cb):''):'Call '+extra.n+' · day '+(extra.day+1)+' · due '+fmt(extra.due))+(extra.due<TODAY&&!logged?' <span class="pill warn"><i></i>overdue</span>':'')+'</div>'+
+    (extra.cb&&slot!=='cb'?'<div class="meta">'+((cbOf(p)||{}).kind==='scheduled'?'Scheduled for ':'Call back set for ')+fmtLong(extra.cb)+(extra.cb<TODAY&&!logged?' <span class="pill warn"><i></i>overdue</span>':'')+'</div>':'')+
     (t.office?'<div class="meta">Office '+esc(t.office)+'</div>':'')+(cbx&&cbx.kind==='evergreen'?'<div class="meta"><span class="pill info"><i></i>Evergreen call-back</span></div>':'')+
     (logged&&od?'<div class="meta">Logged '+new Date(od.at).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})+'. Change it here any time.</div>':'');
   var tel=t.phone?String(t.phone).replace(/[^0-9+]/g,''):'';
@@ -513,10 +513,11 @@ function renderToday(){
     if(!active(t,p)){cbPush(t,cb);return}
     var st=stepsOf(t);
     var pc=st.filter(function(x){return x.kind==='call'&&!x.done&&x.due<=TODAY})[0];
+    var later=cb&&cb.date>TODAY;if(later)pc=null;   
     cbPush(t,cb,pc);
     if(pc)calls.push({t:t,s:pc});
     var ne=st.filter(function(x){return x.kind==='email'&&!x.done})[0];
-    if(ne&&ne.due<=TODAY)fus.push(cardFor(t,'email',ne));
+    if(ne&&ne.due<=TODAY&&!later)fus.push(cardFor(t,'email',ne));
     st.filter(function(x){return !x.done&&x.due>TODAY&&x.due<=horizon}).forEach(function(x){soon.push({t:t,s:x})});
   });
   var cbSeen={};D.pipeline.forEach(function(p){if(cbSeen[p.key]||(p.email&&T[p.email]))return;cbSeen[p.key]=1;cbPush(stub(p),cbOpen(p,null))});   
@@ -532,7 +533,7 @@ function renderToday(){
   logged.sort(function(a,b){return a.at<b.at?1:-1});
   soon.sort(function(a,b){return a.s.due<b.s.due?-1:(a.s.due>b.s.due?1:0)});
   
-  calls.forEach(function(c){var p=byEmail[c.t.email]||byKey[c.t.key]||{key:c.t.key},cb=(c.s.slot==='cb'||c.s.cb)?cbOf(p):null;c.z=zoneOf(p.state);c.zn=ZONE_NAME[c.z]||'';c.g=cb?(cb.kind==='evergreen'?0:1):2;
+  calls.forEach(function(c){var p=byEmail[c.t.email]||byKey[c.t.key]||{key:c.t.key},cb=(c.s.slot==='cb'||c.s.cb)?cbOf(p):null;c.z=zoneOf(p.state);c.zn=ZONE_NAME[c.z]||'';c.g=cb&&cb.kind!=='scheduled'?(cb.kind==='evergreen'?0:1):2;
     c.pk=oid(p.key,c.s.slot)});
   var GRP=['Evergreen call-backs','Call-backs','Cadence calls'];
   calls.sort(function(a,b){return a.g-b.g||a.z-b.z||(a.s.due<b.s.due?-1:(a.s.due>b.s.due?1:0))||String(a.t.firm).localeCompare(String(b.t.firm))});
