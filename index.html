@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-nSsHGmJActdnms6+2PDDZSbcPH+PQZevj50qIe/Xxo4=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-TMIj7sAd1wVrLfXRFSzAPMA4P17weYpNv12RjYxop6o=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c10'/%3E%3Ccircle cx='30' cy='31' r='15' fill='none' stroke='%23ffffff' stroke-width='7'/%3E%3Ccircle cx='49' cy='47' r='5' fill='%234f86ff'/%3E%3C/svg%3E"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" media="(max-width:760px)" content="#0e0f12"><meta name="theme-color" content="#ffffff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="Order"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
 /* ---------- the desk, 2026-10-15 (evening): one system, written once. Space and type do the work; a line only where a
@@ -66,7 +66,7 @@ td.n,th.n{text-align:right;white-space:nowrap}
 .pill.warn{color:var(--accent-ink)}.pill.auto{color:var(--mute)}
 .dotc{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--dim);vertical-align:middle;flex:none}.dotc.good{background:var(--good)}.dotc.warn,.dotc.info{background:var(--accent)}.dotc.bad{background:var(--bad)}
 /* fields */
-select,input[type=search],input[type=date],input[type=email],input[type=text],textarea{background-color:var(--card);border:1px solid var(--line2);border-radius:var(--r2);height:38px;padding:0 12px;font-size:.92rem;color:var(--ink);transition:border-color .15s ease,box-shadow .15s ease}
+select,input[type=search],input[type=date],input[type=email],input[type=text],input[type=tel],textarea{background-color:var(--card);border:1px solid var(--line2);border-radius:var(--r2);height:38px;padding:0 12px;font-size:.92rem;color:var(--ink);transition:border-color .15s ease,box-shadow .15s ease}
 select{cursor:pointer;-webkit-appearance:none;appearance:none;padding-right:34px;background-image:var(--chev);background-repeat:no-repeat;background-position:right 11px center;background-size:14px}
 textarea{display:block;width:100%;height:auto;min-height:84px;padding:10px 12px;resize:vertical;line-height:1.5}
 select:focus,input:focus,textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft);outline:none}
@@ -209,6 +209,21 @@ details.held>div{margin-top:12px}
 .tp .lab{font-size:.8rem;font-weight:600;color:var(--mute);margin:0 0 4px}.tp p{margin:0 0 16px;color:var(--ink)}.tp p:last-child{margin-bottom:0}
 .tp-con{display:flex;flex-direction:column;align-items:flex-start;gap:8px;margin-top:14px}.tp .callbtn{margin-top:0;height:40px}
 .tp-ctl{display:grid;gap:10px}.tp-ctl select{width:100%}.tp-ctl textarea{min-height:64px}
+/* the call flow (10-16): instant taps, a press you can feel, no sticky hover on a phone, the next call sliding in */
+button,a,input,select,textarea,label,summary{touch-action:manipulation}
+.chips .oc:active,.btn:active,.kind button:active,.ql button:active{transform:scale(.97)}
+.kind{display:inline-flex;border:1px solid var(--line2);border-radius:var(--r2);overflow:hidden;flex:none}
+.kind button{border:0;background:none;height:36px;padding:0 14px;font-size:.84rem;font-weight:500;color:var(--mute);cursor:pointer;transition:background .15s ease,color .15s ease}
+.kind button+button{border-left:1px solid var(--line2)}.kind button.on{background:var(--ink);color:var(--bg)}
+.cbmeta input[type=tel]{flex:1;min-width:150px}
+.qg{font-size:.78rem;font-weight:600;color:var(--mute);padding:12px 10px 4px;break-after:avoid}.qg span{font-weight:500;margin-left:4px}
+.qg:first-child{padding-top:0}.ql button.pend b:after{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:var(--accent);margin-left:4px;vertical-align:middle}
+.one .card{animation:cardin .22s ease-out}@keyframes cardin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card.leaving{opacity:0;transform:translateY(-8px);transition:opacity .2s ease,transform .2s ease}
+@media (hover:none){.btn:hover{border-color:var(--line2)}.btn.primary:hover{background:var(--ink)}.chips .oc:hover{border-color:var(--line2);color:var(--ink2)}
+ .chips .oc.on,.chips .oc.on:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}.ql button:hover{background:none;color:var(--ink2)}
+ .ql button[aria-current=true],.ql button[aria-current=true]:hover{background:var(--accent-soft);color:var(--ink)}.prow:hover{background:none}.tab:hover{color:var(--mute)}.tab[aria-selected=true]:hover{color:var(--ink)}}
+@media (prefers-reduced-motion:reduce){.one .card{animation:none}.card.leaving{transition:none}}
 /* sign-in (the hosted shell) */
 #signin{max-width:400px;margin:10vh auto 0}#signin .head{margin-bottom:20px}#signin h1{font-size:1.8rem}
 #signin .cbrow{flex-direction:column;align-items:stretch;gap:8px}#signin .cbrow label{font-weight:500;color:var(--ink2)}#signin .cbrow .btn{height:40px;margin-top:4px}#signin .cbrow input{flex:none;height:44px}
@@ -240,9 +255,10 @@ details.held>div{margin-top:12px}
  .card .who{font-size:1.25rem}.card .big{font-size:1.7rem}.card .big a{display:inline-block;padding:2px 0}
  .callbtn,.drawer .callbtn{display:flex;width:100%;height:52px;font-size:1.02rem;margin-top:14px}
  .chips{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.chips .oc{min-height:48px;font-size:.9rem}
- .card select,.cbrow input{height:46px}.card .savebar .btn,.dbar .btn.primary{flex:1;height:48px}
+ .card select,.cbrow input{height:46px}.cbmeta{flex-wrap:wrap}.cbmeta .kind{width:100%}.cbmeta .kind button{flex:1;height:44px}.card .savebar .btn,.dbar .btn.primary{flex:1;height:48px}
  .one .onebar{position:sticky;top:calc(env(safe-area-inset-top,0px) + var(--nav-h,53px));z-index:10;background:var(--bg);padding:10px 0;margin:0 0 6px}
- .one .onebar .btn{height:40px;min-width:72px}.one #calls-list,.qlh,.ql,.qmore{display:none}
+ .one .onebar{flex-wrap:nowrap;gap:8px}.one .onebar .zone{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.one .onebar .n{white-space:nowrap}
+ .one .onebar .btn{height:40px;min-width:68px;flex:none}.one #calls-list,.qlh,.ql,.qmore{display:none}
  .soon{grid-template-columns:minmax(0,1fr) auto;gap:4px 12px}.soon .sf{grid-column:1/-1}
  .toolbar{position:static;padding-top:0}.seg{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;gap:18px;margin:0 -16px;padding:0 16px;width:calc(100% + 32px)}.seg::-webkit-scrollbar{display:none}.toolbar select{flex:1}
  .prow,.phead{min-width:0}.phead{display:none}.prow{padding:16px 0}.prow:hover{background:none}
@@ -357,15 +373,16 @@ function odoc(k,slot){return S.docs.outcomes[oid(k,slot)]||null}
 function outcome(k,slot){var d=odoc(k,slot);return d?(d.outcome||''):''}
 function addBiz(n){var d=pd(TODAY),c=0;while(c<n){d.setDate(d.getDate()+1);if(d.getDay()!==0&&d.getDay()!==6)c++}return iso(d)}
 
-function cbRaw(p){var d=doc(p.key);return d&&d.callback!=null?{date:d.callback||'',at:d.callback_at||(d.callback?d.at:'')||''}:{date:p.hcallback||'',at:p.hcallback_at||''}}
-function cbOf(p){var r=cbRaw(p);return /^\d{4}-\d{2}-\d{2}$/.test(r.date)?{date:r.date,at:nz(r.at)}:null}
+function cbRaw(p){var d=doc(p.key);return d&&d.callback!=null?{date:d.callback||'',at:d.callback_at||(d.callback?d.at:'')||'',kind:d.callback_kind||'',phone:d.callback_phone||''}:{date:p.hcallback||'',at:p.hcallback_at||'',kind:'',phone:''}}
+
+function cbOf(p){var r=cbRaw(p);return /^\d{4}-\d{2}-\d{2}$/.test(r.date)?{date:r.date,at:nz(r.at),kind:r.kind,phone:r.phone}:null}
 
 function cbState(p,t){
   var cb=cbOf(p);if(!cb)return null;
   var o=['1','2','cb'].map(function(s){return odoc(p.key,s)}).filter(function(d){var w=d&&nz(d.edited||d.at);return d&&d.outcome&&w>cb.at&&localDay(w)>=cb.date})[0];
   
   if(!o&&t&&t.calld)o=['1','2'].map(function(s){return t.calls[s]&&t.calld[s]&&t.calld[s]>=cb.date&&t.calld[s]>=localDay(cb.at)?{outcome:t.calls[s]}:null}).filter(Boolean)[0];
-  cb.why=(t&&t.opted)||statusOf(p,S.T||{}).name===D.ui.n.s_dnc?D.ui.n.s_dnc.toLowerCase():(t&&t.lastReply&&t.lastReply>cb.at?'they replied '+fmt(localDay(t.lastReply)):(o?'a call was logged ('+o.outcome+')':''));
+  cb.why=(t&&t.opted)||statusOf(p,S.T||{}).name===D.ui.n.s_dnc?D.ui.n.s_dnc.toLowerCase():cb.kind==='evergreen'?'':(t&&t.lastReply&&t.lastReply>cb.at?'they replied '+fmt(localDay(t.lastReply)):(o?'a call was logged ('+o.outcome+')':''));
   return cb;
 }
 
@@ -412,9 +429,11 @@ function cardFor(t,kind,extra,logged){
   var st=statusOf(p,S.T),nx=nextStep(t),od=odoc(k,slot);
   var meta=esc(t.seat||'-')+(t.posted?' · posted '+fmt(t.posted):'')+(t.sent.length?' · emailed '+fmt(localDay(t.sent[0])):'')+(t.variant?' · '+esc(t.variant):'')+(t.kind==='post-call'?' · post-call':'');
   var next=nx&&!(kind==='call'&&nx.slot===extra.slot)?'<div class="meta" style="margin-top:4px">Next: <b style="color:var(--ink)">'+stepName(nx)+'</b> · '+fmtLong(nx.due)+(nx.kind==='call'&&t.phone?' · '+esc(t.phone):'')+'</div>':'';
-  var mid='';
+  var mid='',cbx=kind==='call'&&(slot==='cb'||extra.cb)?cbOf(p):null;
+  if(cbx&&cbx.phone&&String(cbx.phone).replace(/\D/g,'')!==String(t.phone||'').replace(/\D/g,''))t=Object.assign({},t,{phone:cbx.phone,office:t.phone});
   if(kind==='call') mid=(t.phone?'<div class="big"><a href="tel:'+esc(String(t.phone).replace(/[^0-9+]/g,''))+'">'+esc(t.phone)+'</a></div>':'<div class="big">no phone on file</div>')+'<div class="meta">'+(slot==='cb'?'Call back'+(extra.cb?' set for '+fmtLong(extra.cb):''):'Call '+extra.n+' · day '+(extra.day+1)+' · due '+fmt(extra.due))+(extra.due<TODAY&&!logged?' <span class="pill warn"><i></i>overdue</span>':'')+'</div>'+
     (extra.cb&&slot!=='cb'?'<div class="meta">Call back set for '+fmtLong(extra.cb)+(extra.cb<TODAY&&!logged?' <span class="pill warn"><i></i>overdue</span>':'')+'</div>':'')+
+    (t.office?'<div class="meta">Office '+esc(t.office)+'</div>':'')+(cbx&&cbx.kind==='evergreen'?'<div class="meta"><span class="pill info"><i></i>Evergreen call-back</span></div>':'')+
     (logged&&od?'<div class="meta">Logged '+new Date(od.at).toLocaleTimeString([], {hour:'numeric',minute:'2-digit'})+'. Change it here any time.</div>':'');
   var tel=t.phone?String(t.phone).replace(/[^0-9+]/g,''):'';
   if(kind==='call'&&tel) mid+='<a class="btn primary callbtn" href="tel:'+esc(tel)+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><span>Call '+esc(t.to&&t.to!=='-'?t.to:'the office')+'</span></a>';
@@ -430,12 +449,14 @@ function cardFor(t,kind,extra,logged){
 function controls(k,slot,kind,t,p,logged){
   
   var pk=oid(k,slot)+(logged?'~log':''),pend=S.pending[pk],o0=slot==='cb'&&!logged?'':outcome(k,slot),ov=pend?pend.outcome:o0,nv=pend&&pend.notes!=null?pend.notes:notesOf(p);
-  var cbk=(kind==='call'||kind==='reply')&&!(t&&t.opted)&&statusOf(p,S.T||{}).name!==D.ui.n.s_dnc,cb0=cbk?((cbOpen(p,t)||{}).date||''):'',cv=pend&&pend.callback!=null?pend.callback:cb0;
+  var cbk=(kind==='call'||kind==='reply')&&!(t&&t.opted)&&statusOf(p,S.T||{}).name!==D.ui.n.s_dnc,cbo=cbk?(cbOpen(p,t)||{}):{},cb0=cbo.date||'',cv=pend&&pend.callback!=null?pend.callback:cb0,ck0=cbo.kind||'',cp0=cbo.phone||'',ckv=pend&&pend.cbkind!=null?pend.cbkind:ck0,cpv=pend&&pend.cbphone!=null?pend.cbphone:cp0;
   var opts=D.outcomes[kind].map(function(o){return '<option value="'+esc(o)+'"'+(ov===o?' selected':'')+'>'+esc(o)+'</option>'}).join('');
   var chips=kind==='call'?'<div class="chips">'+D.outcomes.call.map(function(o){return '<button type="button" class="oc'+(ov===o?' on':'')+'" data-o="'+esc(o)+'">'+esc(o)+'</button>'}).join('')+'</div>':'';
   return '<div class="ctl" data-card="'+esc(pk)+'">'+chips+'<select data-key="'+esc(k)+'" data-slot="'+esc(slot)+'" data-email="'+esc(t.email)+'"'+(slot==='cb'?' data-o0="'+esc(o0)+'"':'')+' id="oc-'+esc(pk)+'" aria-label="Outcome"><option value="">Outcome…</option>'+opts+'</select>'+
     '<textarea data-notes="'+esc(k)+'" id="tn-'+esc(pk)+'" placeholder="Notes for '+esc(t.firm)+'">'+esc(nv)+'</textarea>'+
-    (cbk?'<div class="cbrow"><label for="cb-'+esc(pk)+'">Call back on</label><input type="date" data-cb="'+esc(k)+'" data-cb0="'+esc(cb0)+'" id="cb-'+esc(pk)+'" value="'+esc(cv)+'"><button class="btn cbclear" type="button">Clear</button></div>':'')+
+    (cbk?'<div class="cbrow"><label for="cb-'+esc(pk)+'">Call back on</label><input type="date" data-cb="'+esc(k)+'" data-cb0="'+esc(cb0)+'" id="cb-'+esc(pk)+'" value="'+esc(cv)+'"><button class="btn cbclear" type="button">Clear</button></div>'+
+      '<div class="cbrow cbmeta"><div class="kind" role="group" aria-label="Call-back kind" data-k0="'+esc(ck0)+'"><button type="button" data-kind=""'+(ckv?'':' class="on"')+'>Once</button><button type="button" data-kind="evergreen"'+(ckv==='evergreen'?' class="on"':'')+'>Evergreen</button></div>'+
+      '<input type="tel" data-cbphone data-p0="'+esc(cp0)+'" value="'+esc(cpv)+'" placeholder="Call-back number (optional)" aria-label="Call-back number"></div>':'')+
     '<div class="savebar"><button class="btn primary save" type="button"'+(pend?'':' disabled')+'>Save</button><span class="saved" style="color:var(--warn)">'+(pend?'Unsaved changes':'')+'</span></div></div>';
 }
 var QN=12,QS=8;   
@@ -473,28 +494,30 @@ function renderToday(){
   logged.sort(function(a,b){return a.at<b.at?1:-1});
   soon.sort(function(a,b){return a.s.due<b.s.due?-1:(a.s.due>b.s.due?1:0)});
   
-  calls.forEach(function(c){var p=byEmail[c.t.email]||byKey[c.t.key]||{};c.z=zoneOf(p.state);c.zn=ZONE_NAME[c.z]||''});
-  calls.sort(function(a,b){return a.z-b.z||(a.s.due<b.s.due?-1:(a.s.due>b.s.due?1:0))||String(a.t.firm).localeCompare(String(b.t.firm))});
+  calls.forEach(function(c){var p=byEmail[c.t.email]||byKey[c.t.key]||{key:c.t.key},cb=(c.s.slot==='cb'||c.s.cb)?cbOf(p):null;c.z=zoneOf(p.state);c.zn=ZONE_NAME[c.z]||'';c.g=cb?(cb.kind==='evergreen'?0:1):2;
+    c.pk=oid(p.key,c.s.slot)});
+  var GRP=['Evergreen call-backs','Call-backs','Cadence calls'];
+  calls.sort(function(a,b){return a.g-b.g||a.z-b.z||(a.s.due<b.s.due?-1:(a.s.due>b.s.due?1:0))||String(a.t.firm).localeCompare(String(b.t.firm))});
   var cap=capToday();
   $('#t-date').textContent=new Date().toLocaleDateString(undefined,{weekday:'long',month:'long',day:'numeric'});
   var quiet=[];
   function sec(id,title,items,none){if(!items.length){quiet.push(none);return '<div id="'+id+'"></div>'}return '<h2 id="'+id+'">'+title+' <span class="n">'+items.length+'</span></h2><div class="cards">'+items.join('')+'</div>'}
   var nextRows=calls.slice(0,4).map(function(c,i){return '<button class="wrow" type="button" data-go="'+i+'"><span class="wdot'+(i===S.callIdx?' act':(i<S.callIdx?' done':''))+'"></span><span>'+esc(c.t.firm)+'</span><span>'+esc(stepName(c.s))+' · '+esc(c.zn)+'</span><b>'+esc(c.t.phone||'')+'</b></button>'}).join('');
   $('#t-sum').innerHTML='<div class="win"><div class="win-tiles">'+
-    [['#s-calls','Calls due',calls.length,calls.length?'east to west':'none due'],['#s-fu','Follow-up emails due',fus.length,fus.length?'drafts that morning':'none due'],['#s-new','New emails to send',drafts.length,drafts.length?'in Gmail Drafts':'nothing waiting'],['#s-log','Logged today',logged.length,logged.length?'saved':'nothing yet']].filter(function(x,i){return i===0||x[2]}).map(function(x){return '<a href="'+x[0]+'"><div class="tk">'+x[1]+'</div><div class="tv">'+x[2]+'</div><div class="ts">'+x[3]+'</div></a>'}).join('')+
+    [['#s-calls','Calls due',calls.length,calls.length?'east to west':'none due'],['#s-calls','Call-backs',calls.filter(function(c){return c.g<2}).length,''],['#s-fu','Follow-up emails due',fus.length,fus.length?'drafts that morning':'none due'],['#s-new','New emails to send',drafts.length,drafts.length?'in Gmail Drafts':'nothing waiting'],['#s-log','Logged today',logged.length,logged.length?'saved':'nothing yet']].filter(function(x,i){return i===0||x[2]}).map(function(x){return '<a href="'+x[0]+'"><div class="tk">'+x[1]+'</div><div class="tv">'+x[2]+'</div><div class="ts">'+x[3]+'</div></a>'}).join('')+
     '<a href="#s-new"><div class="tk">Sent today</div><div class="tv">'+sentToday+' <span class="muted">of '+cap+'</span></div><div class="ts '+(sentToday>=cap?'good':'')+'">'+'today'+'</div></a></div>'+
     '</div>';
   var soonRows=soon.filter(function(x,i){return S.soonAll||i<QS}).map(function(x){var t=x.t;return '<div class="soon"><span class="sd">'+fmtLong(x.s.due)+'</span><span>'+stepName(x.s)+'</span><span class="sf">'+(t.to&&t.to!=='-'?esc(t.to)+' · ':'')+esc(t.firm)+'</span><span class="muted">'+(x.s.kind==='call'?esc(t.phone||''):'drafts that morning')+'</span></div>'});
   
-  var callsHtml,held=false;
+  var callsHtml;
   if(!calls.length)callsHtml='<div class="cards"><div class="empty">'+D.ui.n.l_nocalls+'</div></div>';
   else if(S.callsList)callsHtml='<div class="onebar"><span class="sp"></span><button class="btn" type="button" id="calls-one">One at a time</button></div><div class="cards">'+calls.map(function(c){return cardFor(c.t,'call',c.s)}).join('')+'</div>';
   else{
     if(S.callIdx>=calls.length)S.callIdx=calls.length-1;if(S.callIdx<0)S.callIdx=0;try{sessionStorage.setItem('order.callIdx',String(S.callIdx))}catch(e){}
-    var c=calls[S.callIdx];held=!!S.pending[oid((byEmail[c.t.email]||byKey[c.t.key]||{key:c.t.key}).key,c.s.slot)];
-    callsHtml='<div class="one"><div class="onebar"><span class="n">'+(S.callIdx+1)+' of '+calls.length+'</span><span class="zone">'+esc(c.zn)+'</span>'+(held?'<span class="pill warn"><i></i>Save or clear this card to move on</span>':'')+'<span class="sp"></span>'+
-      '<button class="btn" type="button" id="calls-prev"'+(S.callIdx&&!held?'':' disabled')+'>Back</button><button class="btn" type="button" id="calls-next"'+(S.callIdx<calls.length-1&&!held?'':' disabled')+'>Next</button><button class="btn" type="button" id="calls-list">Show as a list</button></div>'+
-      '<div class="onegrid"><div class="cards">'+cardFor(c.t,'call',c.s)+'</div><div class="qlh">Up next</div><div class="queue ql">'+calls.map(function(x,i){if(!S.qAll&&i>=QN&&i!==S.callIdx)return '';return '<button type="button" data-i="'+i+'"'+(i===S.callIdx?' aria-current="true"':'')+' title="'+esc(x.zn)+'"><b>'+(i<9?'0':'')+(i+1)+'</b><span>'+esc(x.t.firm)+'</span><em>'+esc(stepName(x.s))+'</em></button>'}).join('')+'</div>'+(calls.length>QN?'<button type="button" class="qmore" id="q-more">'+(S.qAll?'Show fewer':'Show all '+calls.length)+'</button>':'')+'</div></div>';
+    var c=calls[S.callIdx];
+    callsHtml='<div class="one"><div class="onebar"><span class="n">'+(S.callIdx+1)+' of '+calls.length+'</span><span class="zone">'+esc(GRP[c.g])+' · '+esc(c.zn)+'</span><span class="sp"></span>'+
+      '<button class="btn" type="button" id="calls-prev"'+(S.callIdx?'':' disabled')+'>Back</button><button class="btn" type="button" id="calls-next"'+(S.callIdx<calls.length-1?'':' disabled')+'>Next</button><button class="btn" type="button" id="calls-list">Show as a list</button></div>'+
+      '<div class="onegrid"><div class="cards">'+cardFor(c.t,'call',c.s)+'</div><div class="qlh">Up next</div><div class="queue ql">'+calls.map(function(x,i){if(!S.qAll&&i>=QN&&i!==S.callIdx)return '';var hd=(i===0||calls[i-1].g!==x.g)?'<div class="qg">'+esc(GRP[x.g])+' <span>'+calls.filter(function(y){return y.g===x.g}).length+'</span></div>':'';return hd+'<button type="button" data-i="'+i+'"'+(i===S.callIdx?' aria-current="true"':'')+(S.pending[x.pk]?' class="pend"':'')+' title="'+esc(x.zn)+'"><b>'+(i<9?'0':'')+(i+1)+'</b><span>'+esc(x.t.firm)+'</span><em>'+esc(stepName(x.s))+'</em></button>'}).join('')+'</div>'+(calls.length>QN?'<button type="button" class="qmore" id="q-more">'+(S.qAll?'Show fewer':'Show all '+calls.length)+'</button>':'')+'</div></div>';
   }
   $('#t-body').innerHTML=(calls.length&&!S.callsList?'<div id="s-calls" class="gap"></div>':'<h2 id="s-calls">Calls due <span class="n">'+calls.length+'</span></h2>')+callsHtml+
     sec('s-fu','Follow-up emails due',fus,'No follow-up emails due.')+
@@ -507,9 +530,8 @@ function renderToday(){
   var sm=$('#soon-more');if(sm)sm.onclick=function(){S.soonAll=!S.soonAll;var y=window.scrollY;renderToday();window.scrollTo(0,y)};
   if(pv)pv.onclick=function(){S.callIdx--;renderToday()};if(nx)nx.onclick=function(){S.callIdx++;renderToday()};
   if(ls)ls.onclick=function(){S.callsList=true;renderToday()};if(on)on.onclick=function(){S.callsList=false;renderToday()};
-  $$('.queue button').forEach(function(b){b.onclick=function(){if(held){toast('Save or clear this card to move on');return}var y=window.scrollY,ql=$('.ql'),qs=ql?ql.scrollTop:0;S.callIdx=+b.dataset.i;renderToday();window.scrollTo(0,y);var q2=$('.ql');if(q2)q2.scrollTop=qs}});
-  var curC=calls[S.callIdx],heldNow=!!(curC&&S.pending[oid((byEmail[curC.t.email]||byKey[curC.t.key]||{key:curC.t.key}).key,curC.s.slot)]);
-  $$('#t-sum .wrow').forEach(function(b){b.onclick=function(){if(heldNow){toast('Save or clear this card to move on');return}S.callsList=false;S.callIdx=+b.dataset.go;renderToday();window.scrollTo(0,$('#s-calls').offsetTop-navH()-8)}});
+  $$('.queue button').forEach(function(b){b.onclick=function(){var y=window.scrollY,ql=$('.ql'),qs=ql?ql.scrollTop:0;S.callIdx=+b.dataset.i;renderToday();window.scrollTo(0,y);var q2=$('.ql');if(q2)q2.scrollTop=qs}});
+  $$('#t-sum .wrow').forEach(function(b){b.onclick=function(){S.callsList=false;S.callIdx=+b.dataset.go;renderToday();window.scrollTo(0,$('#s-calls').offsetTop-navH()-8)}});
   bindCards($('#t-body'));
 }
 
@@ -540,7 +562,7 @@ function renderPipeline(){
 }
 function openDrawer(key){
   var p=byKey[key];if(!p)return;S.drawer=key;var T=S.T,t=p.email&&T[p.email],st=statusOf(p,T);
-  var h=[],touches='',rows=[],cbs=cbState(p,t||null),cb0=cbs&&!cbs.why?cbs.date:'';
+  var h=[],touches='',rows=[],cbs=cbState(p,t||null),cb0=cbs&&!cbs.why?cbs.date:'',ck0=cbs&&!cbs.why?cbs.kind||'':'',cp0=cbs&&!cbs.why?cbs.phone||'':'';
   if(t){
     
     rows=[['','Email 1',t.sent[0]?'Sent '+fmtLong(localDay(t.sent[0])):'Not sent','']];
@@ -558,7 +580,9 @@ function openDrawer(key){
   $('#drawer').innerHTML='<div class="dh"><div><div class="eyebrow">'+esc([p.city,p.state].filter(Boolean).join(', ')||'Firm')+'</div><h3 id="dtitle">'+esc(p.firm)+'</h3><div class="muted small" style="margin-top:4px">'+esc(p.law||D.ui.n.l_practice)+'</div></div><button class="btn" id="dclose" aria-label="Close">Close</button></div>'+
     (p.phone?'<a class="btn primary callbtn" style="margin-top:16px" href="tel:'+esc(String(p.phone).replace(/[^0-9+]/g,''))+'"><span>Call '+esc(p.partner||p.phone)+'</span></a>':'')+'<div class="dsec"><div class="lab">Status and notes</div><div style="display:grid;gap:12px">'+statusSelect('dstatus',st.auto?'':st.name)+'<div class="muted small" id="dmeaning">'+esc(STATUS[st.name]?STATUS[st.name].meaning:(st.auto?'Set by the page until you pick one.':''))+'</div>'+
       '<textarea id="dnotes" placeholder="Notes">'+esc(notesOf(p))+'</textarea>'+
-      '<div class="cbrow"><label for="dcb">Call back on</label><input type="date" id="dcb" value="'+esc(cb0)+'"><button class="btn" type="button" id="dcbclear">Clear</button></div></div></div>'+
+      '<div class="cbrow"><label for="dcb">Call back on</label><input type="date" id="dcb" value="'+esc(cb0)+'"><button class="btn" type="button" id="dcbclear">Clear</button></div>'+
+      '<div class="cbrow cbmeta"><div class="kind" id="dkind" role="group" aria-label="Call-back kind"><button type="button" data-kind=""'+(ck0?'':' class="on"')+'>Once</button><button type="button" data-kind="evergreen"'+(ck0==='evergreen'?' class="on"':'')+'>Evergreen</button></div>'+
+      '<input type="tel" id="dcbp" value="'+esc(cp0)+'" placeholder="Call-back number (optional)" aria-label="Call-back number"></div></div></div>'+
     '<div class="dsec"><div class="lab">Contact</div><div class="kv">'+(p.partner?'<span>Partner</span><span>'+esc(p.partner)+'</span>':'')+
       (p.phone?'<span>Phone</span><span><a class="sel" href="tel:'+esc(String(p.phone).replace(/[^0-9+]/g,''))+'">'+esc(p.phone)+'</a><button class="copy" data-copy="'+esc(p.phone)+'">Copy</button></span>':'')+
       (p.email?'<span>Email</span><span><span class="sel">'+esc(p.email)+'</span><button class="copy" data-copy="'+esc(p.email)+'">Copy</button></span>':'<span>Email</span><span class="muted">None published</span>')+
@@ -575,7 +599,7 @@ function openDrawer(key){
   var mark=function(){S.drawerDirty=true;btn.disabled=false;sv.textContent='Unsaved changes';sv.style.color='var(--warn)'};
   $('#dstatus').onchange=function(){$('#dmeaning').textContent=STATUS[this.value]?STATUS[this.value].meaning:'';statusTouched=true;mark()};
   $('#dnotes').oninput=mark;
-  $('#dcb').onchange=mark;$('#dcb').oninput=mark;$('#dcbclear').onclick=function(){$('#dcb').value='';mark()};
+  $('#dcb').onchange=mark;$('#dcb').oninput=mark;$('#dcbp').oninput=mark;$$('#dkind button').forEach(function(x){x.onclick=function(){$$('#dkind button').forEach(function(y){y.classList.toggle('on',y===x)});mark()}});$('#dcbclear').onclick=function(){$('#dcb').value='';mark()};
   $$('#drawer select[data-slot]').forEach(function(s){s.onchange=mark});
   btn.onclick=function(){
     var cbv=$('#dcb').value;if($('#dcb').validity&&$('#dcb').validity.badInput){sv.textContent='Finish the call-back date, or Clear it.';sv.style.color='var(--bad)';return}
@@ -583,12 +607,12 @@ function openDrawer(key){
     var chain=Promise.resolve(),nv=$('#dnotes').value,stv=$('#dstatus').value;
     
     $$('#drawer select[data-slot]').forEach(function(s){var slot=s.dataset.slot;if(s.value!==outcome(p.key,slot))chain=chain.then(function(){return writeOutcome(p,p.key,slot,p.email,s.value)})});
-    chain.then(function(){var patch={};if(nv!==notesOf(p))patch.notes=nv;if(statusTouched)patch.status=stv;if(cbv!==cb0)patch.callback=cbv;if(Object.keys(patch).length)return savePipe(p,patch)})
+    chain.then(function(){var patch={};if(nv!==notesOf(p))patch.notes=nv;if(statusTouched)patch.status=stv;if(cbv!==cb0)patch.callback=cbv;var dk=(($('#dkind button.on')||{}).dataset||{}).kind||'',dp=$('#dcbp').value.trim();if(dk!==ck0)patch.cbkind=dk;if(dp!==cp0)patch.cbphone=dp;if(Object.keys(patch).length)return savePipe(p,patch)})
       .then(function(){S.drawerDirty=false;S.dirty=true;toast('Saved: '+p.firm);openDrawer(p.key);$('#dsaved').textContent='Saved';$('#dsaved').style.color='var(--good)'})
       .catch(function(e){btn.disabled=false;sv.textContent='Not saved ('+((e&&e.code)||'error')+'). Press Save again.';sv.style.color='var(--bad)'});
   };
   bindCopy($('#drawer'));
-  if(!S.db){$$('#drawer select, #drawer textarea, #drawer input[type=date], #dcbclear').forEach(function(x){x.disabled=true});sv.textContent='Saving works on the dashboard opened in your browser.';sv.style.color='var(--mute)'}
+  if(!S.db){$$('#drawer select, #drawer textarea, #drawer input[type=date], #drawer input[type=tel], #dkind button, #dcbclear').forEach(function(x){x.disabled=true});sv.textContent='Saving works on the dashboard opened in your browser.';sv.style.color='var(--mute)'}
 }
 function closeDrawer(){
   if(S.drawerDirty){S.drawerDirty=false;var sv=$('#dsaved');if(sv){sv.textContent='Unsaved changes. Save them, or close again to discard.';sv.style.color='var(--warn)'}return}
@@ -688,6 +712,7 @@ function savePipe(p,patch){
   
   var next={key:p.key,firm:p.firm,email:p.email,status:patch.status!=null?patch.status:(c0.status!=null?c0.status:(st.auto?'':st.name)),notes:patch.notes!=null?patch.notes:notesOf(p),
     callback:patch.callback!=null?patch.callback:cb.date,callback_at:patch.callback!=null?now:cb.at,at:now};
+  var ck=patch.cbkind!=null?patch.cbkind:cb.kind,cp=patch.cbphone!=null?patch.cbphone:cb.phone;if(ck)next.callback_kind=ck;if(cp)next.callback_phone=cp;
   return S.db.doc('pipeline/'+p.key).set(next).then(function(){S.docs.pipeline[p.key]=next});
 }
 
@@ -699,28 +724,37 @@ function writeOutcome(p,k,slot,email,o){
 function bindCards(root){
   $$('.ctl[data-card]',root).forEach(function(box){
     var s=box.querySelector('select[data-slot]'),t=box.querySelector('textarea[data-notes]'),c=box.querySelector('input[data-cb]'),cx=box.querySelector('button.cbclear'),b=box.querySelector('button.save'),sv=box.querySelector('.saved'),pk=box.dataset.card;
-    [s,t,c,cx].concat($$('.chips .oc',box)).forEach(function(x){if(x)x.disabled=!S.db});if(!S.db){b.disabled=true;return}
+    var kd=box.querySelector('.kind'),ph=box.querySelector('input[data-cbphone]'),kindOf=function(){var o=kd&&kd.querySelector('button.on');return o?o.dataset.kind:''};
+    [s,t,c,cx,ph].concat($$('.chips .oc, .kind button',box)).forEach(function(x){if(x)x.disabled=!S.db});if(!S.db){b.disabled=true;return}
+    
     var mark=function(){var bad=c&&c.validity&&c.validity.badInput,prev=S.pending[pk];   
-      S.pending[pk]={outcome:s.value,notes:t?t.value:null,callback:bad?(prev?prev.callback:null):(c&&c.value!==c.dataset.cb0?c.value:null)};b.disabled=false;sv.textContent='Unsaved changes';sv.style.color='var(--warn)';
-      var nb=$('#calls-next'),pb=$('#calls-prev');if(nb&&box.closest('.one')){nb.disabled=true;if(pb)pb.disabled=true}};
+      S.pending[pk]={outcome:s.value,notes:t?t.value:null,callback:bad?(prev?prev.callback:null):(c&&c.value!==c.dataset.cb0?c.value:null),
+        cbkind:kd&&kindOf()!==kd.dataset.k0?kindOf():null,cbphone:ph&&ph.value.trim()!==ph.dataset.p0?ph.value.trim():null};b.disabled=false;sv.textContent='Unsaved changes';sv.style.color='var(--warn)'};
     s.onchange=function(){$$('.chips .oc',box).forEach(function(x){x.classList.toggle('on',x.dataset.o===s.value)});mark()};if(t)t.oninput=mark;
-    $$('.chips .oc',box).forEach(function(ch){ch.onclick=function(){s.value=ch.dataset.o;$$('.chips .oc',box).forEach(function(x){x.classList.toggle('on',x===ch)});mark()}});if(c){c.onchange=mark;c.oninput=mark}if(cx)cx.onclick=function(){c.value='';mark()};b.onclick=function(){commit(box)};
+    $$('.chips .oc',box).forEach(function(ch){ch.onclick=function(){var off=ch.classList.contains('on');s.value=off?'':ch.dataset.o;$$('.chips .oc',box).forEach(function(x){x.classList.toggle('on',!off&&x===ch)});mark()}});
+    if(kd)$$('button',kd).forEach(function(x){x.onclick=function(){$$('button',kd).forEach(function(y){y.classList.toggle('on',y===x)});mark()}});if(ph)ph.oninput=mark;if(c){c.onchange=mark;c.oninput=mark}if(cx)cx.onclick=function(){c.value='';mark()};b.onclick=function(){commit(box)};
   });
 }
 function commit(box){
   var s=box.querySelector('select[data-slot]'),t=box.querySelector('textarea[data-notes]'),c=box.querySelector('input[data-cb]'),b=box.querySelector('button.save'),sv=box.querySelector('.saved');
   var k=s.dataset.key,slot=s.dataset.slot,p=byKey[k]||{key:k,firm:'',email:s.dataset.email},o=s.value,n=t?t.value:null,pk=box.dataset.card,said=[],patch={};
   if(c&&c.validity&&c.validity.badInput){sv.textContent='Finish the call-back date, or Clear it.';sv.style.color='var(--bad)';return}
-  b.disabled=true;sv.textContent='Saving…';sv.style.color='var(--mute)';
+  var a=document.activeElement;if(a&&a.blur&&box.contains(a))a.blur();   
+  var ctl=$$('button,select,textarea,input',box);ctl.forEach(function(x){x.disabled=true});sv.textContent='Saving…';sv.style.color='var(--mute)';
+  var kd=box.querySelector('.kind'),ph=box.querySelector('input[data-cbphone]'),kv=kd?((kd.querySelector('button.on')||{}).dataset||{}).kind||'':'';
   var chain=Promise.resolve(),o0=slot==='cb'?(s.dataset.o0||''):outcome(k,slot);
-  if(n!==null&&n!==notesOf(p)){patch.notes=n;said.push('notes')}
-  if(c&&c.value!==c.dataset.cb0){patch.callback=c.value;said.push(c.value?'call back '+fmtLong(c.value):'call back cleared')}
+  if(kd&&kv!==kd.dataset.k0)patch.cbkind=kv;
+  if(ph&&ph.value.trim()!==ph.dataset.p0)patch.cbphone=ph.value.trim();
+  if(n!==null&&n!==notesOf(p))patch.notes=n;
+  if(c&&c.value!==c.dataset.cb0){patch.callback=c.value;said.push(c.value?'back '+fmtLong(c.value):'call-back cleared')}
   
-  if(o!==o0){chain=chain.then(function(){return writeOutcome(p,k,slot,s.dataset.email,o)});said.push(o||'outcome cleared')}
+  if(o!==o0){chain=chain.then(function(){return writeOutcome(p,k,slot,s.dataset.email,o)});said.unshift(o||'outcome cleared')}
   if(Object.keys(patch).length)chain=chain.then(function(){return savePipe(p,patch)});
   chain.then(function(){delete S.pending[pk];var ns=o&&D.outcome_status[o];sv.textContent='Saved';sv.style.color='var(--good)';
-      toast(said.length?'Saved: '+said.join(' · ')+(ns&&said.indexOf(o)>=0?' · status '+ns:''):'Nothing to save');setTimeout(renderAll,700)})
-    .catch(function(e){b.disabled=false;sv.textContent='Not saved ('+((e&&e.code)||'error')+'). Press Save again.';sv.style.color='var(--bad)'});
+      toast(['Saved'].concat(said).join(' · '));   
+      S.quietUntil=Date.now()+500;var card=box.closest('.card'),one=box.closest('.one');if(card&&one)card.classList.add('leaving');
+      setTimeout(function(){renderAll();var o2=$('.one');if(one&&o2){var r=o2.getBoundingClientRect();if(r.top<0||r.top>window.innerHeight*0.6)window.scrollTo({top:Math.max(0,r.top+window.scrollY-navH()-8),behavior:'smooth'})}},one?220:60)})
+    .catch(function(e){ctl.forEach(function(x){x.disabled=false});sv.textContent='Not saved ('+((e&&e.code)||'error')+'). Press Save again.';sv.style.color='var(--bad)'});
 }
 function bindCopy(root){$$('.copy',root).forEach(function(b){b.onclick=function(){var v=b.dataset.copy;try{navigator.clipboard.writeText(v).then(function(){b.textContent='Copied'},function(){b.textContent='Select it'})}catch(e){b.textContent='Select it'}}})}
 
@@ -740,12 +774,16 @@ function setLive(state,msg){
 }
 function liveAction(){window.__orderRefresh()}
 
+
+function same(a,b){a=a||{};b=b||{};var k={},x;for(x in a)k[x]=1;for(x in b)k[x]=1;for(x in k){if((a[x]==null?'':String(a[x]))!==(b[x]==null?'':String(b[x])))return false}return true}
+function soon(){clearTimeout(S.rq);S.rq=setTimeout(renderAll,Math.max(90,(S.quietUntil||0)-Date.now()))}
+function take(coll,snap){var ch=false;snap.docs.forEach(function(d){var v=d.data()||{};if(!same(S.docs[coll][d.id],v)){S.docs[coll][d.id]=v;ch=true}});if(ch)soon()}
 function renderAll(){
   var a=document.activeElement;if(a&&(a.tagName==='TEXTAREA'||(a.tagName==='SELECT'&&a.id!=='pst')||(a.tagName==='INPUT'&&a.type==='date'))&&!a.closest('#drawer')){S.dirty=true;return}
   if(S.drawer&&!$('#drawer').hidden){S.dirty=true;S.T=threads();renderKpis();return}
   S.dirty=false;S.T=threads();renderToday();renderPipeline();renderEvents();renderKpis();renderBespoke();
 }
-document.addEventListener('focusout',function(){if(S.dirty)setTimeout(function(){if(S.dirty)renderAll()},300)});
+document.addEventListener('focusout',function(){if(S.dirty){clearTimeout(S.rq);S.rq=setTimeout(renderAll,300)}});   
 $$('.tab').forEach(function(b){b.onclick=function(){show(b.dataset.v)}});
 function show(v){$$('.tab').forEach(function(b){b.setAttribute('aria-selected',b.dataset.v===v)});$$('.view').forEach(function(s){s.hidden=s.id!=='v-'+v});try{localStorage.setItem('order.view',v)}catch(e){}window.scrollTo(0,0)}
 try{var sv=localStorage.getItem('order.view');if(sv&&$('#v-'+sv))show(sv)}catch(e){}
@@ -762,7 +800,7 @@ navH();window.addEventListener('resize',navH);
 setLive('build');renderAll();
 S.db=window.__ORDER_DB;
 [['pipeline','pipeline'],['outcomes','outcomes'],['events','events']].forEach(function(x){
-  S.db.collection(x[0]).onSnapshot(function(snap){snap.docs.forEach(function(d){S.docs[x[1]][d.id]=d.data()||{}});renderAll()},function(){});
+  S.db.collection(x[0]).onSnapshot(function(snap){take(x[1],snap)},function(){});
 });
 renderAll();setLive('synced');
 })();
@@ -773,12 +811,15 @@ renderAll();setLive('synced');
 if(window.top!==window.self){document.documentElement.innerHTML='';return}   /* framed by another site: show nothing (no header can carry frame-ancestors on Pages) */
 var CFG=JSON.parse(document.getElementById('desk-config').textContent);
 var SPL=document.getElementById('splash'),SPL0=Date.now(),SPL_READY=false;
+/* the piece plays once in half an hour: back from a call or a reload, the desk opens at once (10-16) */
+var RECENT=false;try{RECENT=Date.now()-(+localStorage.getItem('order.intro.at')||0)<1800000}catch(x){}
+if(RECENT){try{window.__intro&&window.__intro.pause()}catch(x){}if(SPL)SPL.style.transition='opacity .18s ease'}
 /* the opening is the site's own intro (assets/site-intro.min.js, window.__intro): the ledger pulled into the mark, then the line under it.
    The desk shows once the page is ready and the piece has reached the line (11.6 of its 12 seconds), or sooner on Skip. */
 function splashTick(){if(!SPL)return;var I=window.__intro,st=null;try{st=I&&I.state()}catch(x){}
-  var done=window.__introFailed||!st||(Date.now()-SPL0>4500&&!st.playing&&st.t<6.3)||st.t>=11.6||(!st.playing&&(st.t>=10.6||st.phase==='done'))||Date.now()-SPL0>12000;   /* the line is up at 11.6; Skip ends the piece at 10.8; reduced motion shows the end at once */
-  if(SPL_READY&&done){var s=SPL;SPL=null;try{I&&I.pause()}catch(x){}try{sessionStorage.setItem('order-intro-seen','1')}catch(x){}
-    s.classList.add('out');setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s)},600);return}
+  var done=RECENT||window.__introFailed||!st||(Date.now()-SPL0>4500&&!st.playing&&st.t<6.3)||st.t>=11.6||(!st.playing&&(st.t>=10.6||st.phase==='done'))||Date.now()-SPL0>12000;   /* the line is up at 11.6; Skip ends the piece at 10.8; reduced motion shows the end at once */
+  if(SPL_READY&&done){var s=SPL;SPL=null;try{I&&I.pause()}catch(x){}try{sessionStorage.setItem('order-intro-seen','1');if(!RECENT)localStorage.setItem('order.intro.at',String(Date.now()))}catch(x){}
+    s.classList.add('out');setTimeout(function(){if(s.parentNode)s.parentNode.removeChild(s)},RECENT?200:600);return}
   requestAnimationFrame(splashTick)}
 requestAnimationFrame(splashTick);
 function splashDone(){SPL_READY=true}
