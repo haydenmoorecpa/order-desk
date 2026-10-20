@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-SQNY9zYoGohQtENI4e2so/KzpJ7oFjD8gn87LOVhbWY=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><meta name="referrer" content="no-referrer"><meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'sha256-GxM7CzoPNXz5f9NkLXQtkIHAs8Y6741EVUrRU8CSQUQ=' https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.49.1/dist/umd/supabase.js; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src https://wevigxmmbfegfoftsahp.supabase.co wss://wevigxmmbfegfoftsahp.supabase.co; base-uri 'none'; object-src 'none'; form-action 'none'"><title>Order Outreach</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230b0c10'/%3E%3Ccircle cx='30' cy='31' r='15' fill='none' stroke='%23ffffff' stroke-width='7'/%3E%3Ccircle cx='49' cy='47' r='5' fill='%234f86ff'/%3E%3C/svg%3E"><link rel="apple-touch-icon" href="apple-touch-icon.png"><meta name="theme-color" media="(max-width:760px)" content="#0e0f12"><meta name="theme-color" content="#ffffff"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="apple-mobile-web-app-title" content="Order"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
 <style>
 /* ---------- the desk, 2026-10-15 (evening): one system, written once. Space and type do the work; a line only where a
@@ -98,7 +98,8 @@ details.mail summary{cursor:pointer;color:var(--accent);font-size:.875rem;font-w
 details.mail pre{white-space:pre-wrap;font:inherit;font-size:.88rem;line-height:1.6;color:var(--ink2);background:var(--tint);border-radius:10px;padding:16px 18px;margin:10px 0 0;max-width:62ch}
 .chips{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:1fr;gap:6px}
 .chips .oc{min-height:42px;border:1px solid var(--line2);border-radius:var(--r2);background:var(--card);color:var(--ink2);padding:4px 6px;font-size:.82rem;font-weight:500;line-height:1.2;cursor:pointer;transition:background .15s ease,border-color .15s ease,color .15s ease}
-.chips .oc:hover{border-color:var(--ink2);color:var(--ink)}.chips .oc.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}.chips .oc:disabled{opacity:.4;cursor:default}
+.chips .oc:hover{border-color:var(--ink2);color:var(--ink)}.chips .oc.on{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600;box-shadow:0 0 0 3px var(--accent-soft)}.chips .oc.on:before{content:"\2713\00a0"}.chips .oc:disabled{opacity:.4;cursor:default}
+.chips .oc{-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none}.ocsel{margin:6px 0 2px;min-height:1.2em}.ocsel b{color:var(--accent-ink)}
 .chips+select{display:none}
 .savebar{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.savebar .btn.primary{min-width:104px}
 .saved{font-size:.82rem;color:var(--good);min-height:1em}.savebar .saved{min-height:0}
@@ -223,7 +224,7 @@ details.duties ul,.dlist{margin:10px 0 0;padding-left:18px;display:grid;gap:4px;
 #s-hot{margin-top:40px}
 /* the call flow (10-16): instant taps, a press you can feel, no sticky hover on a phone, the next call sliding in */
 button,a,input,select,textarea,label,summary{touch-action:manipulation}
-.chips .oc:active,.btn:active,.kind button:active,.ql button:active{transform:scale(.97)}
+.btn:active,.kind button:active,.ql button:active{transform:scale(.97)}
 .kind{display:inline-flex;border:1px solid var(--line2);border-radius:var(--r2);overflow:hidden;flex:none}
 .kind button{border:0;background:none;height:36px;padding:0 14px;font-size:.84rem;font-weight:500;color:var(--mute);cursor:pointer;transition:background .15s ease,color .15s ease}
 .kind button+button{border-left:1px solid var(--line2)}.kind button.on{background:var(--ink);color:var(--bg)}
@@ -233,7 +234,7 @@ button,a,input,select,textarea,label,summary{touch-action:manipulation}
 .one .card{animation:cardin .22s ease-out}@keyframes cardin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .card.leaving{opacity:0;transform:translateY(-8px);transition:opacity .2s ease,transform .2s ease}
 @media (hover:none){.btn:hover{border-color:var(--line2)}.btn.primary:hover{background:var(--ink)}.chips .oc:hover{border-color:var(--line2);color:var(--ink2)}
- .chips .oc.on,.chips .oc.on:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}.ql button:hover{background:none;color:var(--ink2)}
+ .chips .oc.on,.chips .oc.on:hover{background:var(--accent);border-color:var(--accent);color:#fff}.ql button:hover{background:none;color:var(--ink2)}
  .ql button[aria-current=true],.ql button[aria-current=true]:hover{background:var(--accent-soft);color:var(--ink)}.prow:hover{background:none}.tab:hover{color:var(--mute)}.tab[aria-selected=true]:hover{color:var(--ink)}}
 @media (prefers-reduced-motion:reduce){.one .card{animation:none}.card.leaving{transition:none}}
 /* sign-in (the hosted shell) */
@@ -436,7 +437,7 @@ function histHtml(h){if(!h.length)return '<div class="muted small">Nothing on re
   var li=function(e){return '<li><time>'+fmt(e.d)+'</time><span>'+(e.o?'<b>'+esc(e.o)+'</b>':'')+(e.o&&e.n?' · ':'')+esc(e.n).replace(/\n/g,'<br>')+'</span></li>'};
   var old=h.slice(0,Math.max(0,h.length-4)),rec=h.slice(-4);
   return (old.length?'<details class="earlier"><summary>Earlier · '+old.length+'</summary><ol class="hist2">'+old.map(li).join('')+'</ol></details>':'')+'<ol class="hist2">'+rec.map(li).join('')+'</ol>'}
-function dutiesHtml(p){var d=(p&&p.duties)||[];return d.length?'<details class="mail duties"><summary>Responsibilities in the posting</summary><ul>'+d.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>'+(p.post_url?'<a class="small" href="'+esc(p.post_url)+'" target="_blank" rel="noopener">Open the posting ↗</a>':'')+'</details>':''}
+function dutiesHtml(p){var d=(p&&p.duties)||[],sal=p&&p.salary?'<div class="meta" style="margin:6px 0 4px">Salary in the posting: <b style="color:var(--ink)">'+esc(p.salary)+'</b></div>':'';return (d.length||sal)?'<details class="mail duties"><summary>Responsibilities in the posting'+(p.salary?' · '+esc(p.salary):'')+'</summary>'+sal+(d.length?'<ul>'+d.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>':'')+(p.post_url?'<a class="small" href="'+esc(p.post_url)+'" target="_blank" rel="noopener">Open the posting ↗</a>':'')+'</details>':''}
 function stepName(s){return s.slot==='cb'?'Call back':(s.kind==='call'?'Call ':'Email ')+s.n}
 function statusOf(p,T){
   var d=doc(p.key); if(d&&d.status) return {name:d.status,auto:false};
@@ -490,7 +491,7 @@ function controls(k,slot,kind,t,p,logged){
   var pk=oid(k,slot)+(logged?'~log':''),pend=S.pending[pk],o0=slot==='cb'&&!logged?'':outcome(k,slot),ov=pend?pend.outcome:o0,nv=pend&&pend.notes!=null?pend.notes:notesOf(p);
   var cbk=(kind==='call'||kind==='reply')&&!(t&&t.opted)&&statusOf(p,S.T||{}).name!==D.ui.n.s_dnc,cbo=cbk?(cbOpen(p,t)||{}):{},cb0=cbo.date||'',cv=pend&&pend.callback!=null?pend.callback:cb0,ck0=cbo.kind||'',cp0=cbo.phone||'',ckv=pend&&pend.cbkind!=null?pend.cbkind:ck0,cpv=pend&&pend.cbphone!=null?pend.cbphone:cp0;
   var opts=D.outcomes[kind].map(function(o){return '<option value="'+esc(o)+'"'+(ov===o?' selected':'')+'>'+esc(o)+'</option>'}).join('');
-  var chips=kind==='call'?'<div class="chips">'+D.outcomes.call.map(function(o){return '<button type="button" class="oc'+(ov===o?' on':'')+'" data-o="'+esc(o)+'">'+esc(o)+'</button>'}).join('')+'</div>':'';
+  var chips=kind==='call'?'<div class="chips">'+D.outcomes.call.map(function(o){return '<button type="button" class="oc'+(ov===o?' on':'')+'" aria-pressed="'+(ov===o?'true':'false')+'" data-o="'+esc(o)+'">'+esc(o)+'</button>'}).join('')+'</div><div class="meta ocsel" aria-live="polite">'+(ov?'Outcome: <b>'+esc(ov)+'</b>':'Tap the outcome')+'</div>':'';
   return '<div class="ctl" data-card="'+esc(pk)+'">'+chips+'<select data-key="'+esc(k)+'" data-slot="'+esc(slot)+'" data-email="'+esc(t.email)+'"'+(slot==='cb'?' data-o0="'+esc(o0)+'"':'')+' id="oc-'+esc(pk)+'" aria-label="Outcome"><option value="">Outcome…</option>'+opts+'</select>'+
     '<textarea data-entry="'+esc(k)+'" id="tn-'+esc(pk)+'" rows="2" placeholder="What happened on this call">'+esc(pend&&pend.entry||'')+'</textarea>'+
     (cbk?'<div class="cbrow"><label for="cb-'+esc(pk)+'">Call back on</label><input type="date" data-cb="'+esc(k)+'" data-cb0="'+esc(cb0)+'" id="cb-'+esc(pk)+'" value="'+esc(cv)+'"><button class="btn cbclear" type="button">Clear</button></div>'+
@@ -634,7 +635,7 @@ function openDrawer(key){
       (p.email?'<span>Email</span><span><span class="sel">'+esc(p.email)+'</span><button class="copy" data-copy="'+esc(p.email)+'">Copy</button></span>':'<span>Email</span><span class="muted">None published</span>')+
       (locOf(p)?'<span>Address</span><span><a href="'+esc(mapsUrl(locOf(p)))+'" target="_blank" rel="noopener">'+esc(locOf(p))+'</a></span>':'')+
       (p.website?'<span>Website</span><span><a href="'+esc(p.website)+'" target="_blank" rel="noopener">'+esc(p.website.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''))+' ↗</a></span>':'')+'</div></div>'+
-    '<div class="dsec"><div class="lab">Why it is here</div><div class="kv"><span>'+(p.kind==='launch'?'Opened':'Seat')+'</span><span>'+esc(p.seat||'-')+'</span><span>'+(p.kind==='launch'?'Reported':'Posted')+'</span><span>'+esc(p.posted?fmtLong(p.posted):'-')+'</span>'+
+    '<div class="dsec"><div class="lab">Why it is here</div><div class="kv"><span>'+(p.kind==='launch'?'Opened':'Seat')+'</span><span>'+esc(p.seat||'-')+'</span><span>'+(p.kind==='launch'?'Reported':'Posted')+'</span><span>'+esc(p.posted?fmtLong(p.posted):'-')+'</span>'+(p.salary?'<span>Salary</span><span>'+esc(p.salary)+'</span>':'')+
       '<span>'+esc(D.ui.n.l_attorneys)+'</span><span>'+esc(p.size||'not read')+'</span><span>Gates</span><span>'+esc(p.fit)+(p.hold&&p.fit.indexOf('fits')!==0?' · '+esc(p.hold):'')+'</span>'+
       (p.post_url?'<span>'+(p.kind==='launch'?'Article':'Posting')+'</span><span><a href="'+esc(p.post_url)+'" target="_blank" rel="noopener">'+(p.kind==='launch'?'Open the article':'Open the posting')+' ↗</a></span>':'')+'</div>'+((p.duties||[]).length?'<ul class="dlist">'+p.duties.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>':'')+'</div>'+
     touches+(hist?'<div class="dsec"><div class="lab">'+(t?'Also on record':'What we have done')+'</div><div class="hist">'+hist+'</div></div>':'')+
@@ -778,8 +779,10 @@ function bindCards(root){
     var mark=function(){var bad=c&&c.validity&&c.validity.badInput,prev=S.pending[pk];   
       S.pending[pk]={outcome:s.value,entry:t?t.value:'',notes:ev?ev.value:null,callback:bad?(prev?prev.callback:null):(c&&c.value!==c.dataset.cb0?c.value:null),
         cbkind:kd&&kindOf()!==kd.dataset.k0?kindOf():null,cbphone:ph&&ph.value.trim()!==ph.dataset.p0?ph.value.trim():null};b.disabled=false;sv.textContent='Unsaved changes';sv.style.color='var(--warn)'};
-    s.onchange=function(){$$('.chips .oc',box).forEach(function(x){x.classList.toggle('on',x.dataset.o===s.value)});mark()};if(t)t.oninput=mark;
-    $$('.chips .oc',box).forEach(function(ch){ch.onclick=function(){var off=ch.classList.contains('on');s.value=off?'':ch.dataset.o;$$('.chips .oc',box).forEach(function(x){x.classList.toggle('on',!off&&x===ch)});mark()}});
+    var showPick=function(){$$('.chips .oc',box).forEach(function(x){var on=x.dataset.o===s.value;x.classList.toggle('on',on);x.setAttribute('aria-pressed',on?'true':'false')});var l=box.querySelector('.ocsel');if(l)l.innerHTML=s.value?'Outcome: <b>'+esc(s.value)+'</b>':'Tap the outcome'};
+    s.onchange=function(){showPick();mark()};if(t)t.oninput=mark;
+    
+    $$('.chips .oc',box).forEach(function(ch){ch.onclick=function(){var off=ch.classList.contains('on');s.value=off?'':ch.dataset.o;showPick();mark()}});
     if(kd)$$('button',kd).forEach(function(x){x.onclick=function(){$$('button',kd).forEach(function(y){y.classList.toggle('on',y===x)});mark()}});if(ph)ph.oninput=mark;if(ev)ev.oninput=mark;if(c){c.onchange=mark;c.oninput=mark}if(cx)cx.onclick=function(){c.value='';mark()};b.onclick=function(){commit(box)};
   });
 }
